@@ -1,0 +1,637 @@
+Issue Key,Issue Id,Parent Id,Issue Type,Summary,Epic Name,Epic Link,Description,Acceptance Criteria,Story Points,Sprint,Labels
+GUPPY-1,1,,Epic,E1 Phân tích & Thiết kế,E1 Phân tích & Thiết kế,,,,,,E1
+GUPPY-2,2,,Epic,E2 Hạ tầng,E2 Hạ tầng,,,,,,E2
+GUPPY-3,3,,Epic,E3 Xác thực & Phân quyền,E3 Xác thực & Phân quyền,,,,,,E3
+GUPPY-4,4,,Epic,E4 Danh mục sản phẩm,E4 Danh mục sản phẩm,,,,,,E4
+GUPPY-5,5,,Epic,E5 Tồn kho & Lô cá,E5 Tồn kho & Lô cá,,,,,,E5
+GUPPY-6,6,,Epic,E6 Giỏ hàng,E6 Giỏ hàng,,,,,,E6
+GUPPY-7,7,,Epic,E7 Đặt hàng & Thanh toán,E7 Đặt hàng & Thanh toán,,,,,,E7
+GUPPY-8,8,,Epic,E8 Quản lý đơn,E8 Quản lý đơn,,,,,,E8
+GUPPY-9,9,,Epic,E9 Khuyến mãi & Đánh giá,E9 Khuyến mãi & Đánh giá,,,,,,E9
+GUPPY-10,10,,Epic,E10 Thống kê,E10 Thống kê,,,,,,E10
+GUPPY-11,11,,Epic,E11 Kiểm thử & Triển khai,E11 Kiểm thử & Triển khai,,,,,,E11
+GUPPY-12,12,1,Story,Phân tích nghiệp vụ và tác nhân,,E1 Phân tích & Thiết kế,"Là thành viên nhóm, tôi muốn có đặc tả tác nhân và use case, để cả nhóm hiểu chung phạm vi hệ thống.
+
+Tiêu chí chấp nhận:
+- Có đủ 5 tác nhân và quan hệ kế thừa
+- Mỗi use case có luồng chính và luồng ngoại lệ
+- Luồng trạng thái đơn được giảng viên hoặc nhóm duyệt","- Có đủ 5 tác nhân và quan hệ kế thừa
+- Mỗi use case có luồng chính và luồng ngoại lệ
+- Luồng trạng thái đơn được giảng viên hoặc nhóm duyệt",5,S1 Phân tích & Thiết kế,E1
+GUPPY-13,13,12,Sub-task,Vẽ sơ đồ use case,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-14,14,12,Sub-task,Đặc tả luồng use case chính,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-15,15,12,Sub-task,Viết quy tắc chuyển trạng thái đơn,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-16,16,1,Story,Thiết kế lớp và design pattern,,E1 Phân tích & Thiết kế,"Là lập trình viên, tôi muốn có sơ đồ lớp và danh sách pattern, để hiện thực đúng hướng đối tượng.
+
+Tiêu chí chấp nhận:
+- Sơ đồ lớp có NguoiMua, NhanSu, SanPham, ThanhToan
+- Chỉ rõ chỗ dùng State, Strategy, Factory, Observer, Builder, Repository, Template Method
+- Có sơ đồ tuần tự luồng đặt hàng","- Sơ đồ lớp có NguoiMua, NhanSu, SanPham, ThanhToan
+- Chỉ rõ chỗ dùng State, Strategy, Factory, Observer, Builder, Repository, Template Method
+- Có sơ đồ tuần tự luồng đặt hàng",5,S1 Phân tích & Thiết kế,E1
+GUPPY-17,17,16,Sub-task,Vẽ sơ đồ lớp,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-18,18,16,Sub-task,Vẽ sơ đồ trạng thái đơn hàng,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-19,19,16,Sub-task,Vẽ sơ đồ tuần tự đặt hàng,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-20,20,1,Story,"Thiết kế CSDL, API và kiến trúc",,E1 Phân tích & Thiết kế,"Là lập trình viên, tôi muốn có ERD, đặc tả REST và kiến trúc module, để backend và frontend làm việc song song.
+
+Tiêu chí chấp nhận:
+- ERD thể hiện SINGLE_TABLE và JOINED
+- Danh sách API khớp mục 5 của đề bài
+- Có bảng đối chiếu trang với design-reference","- ERD thể hiện SINGLE_TABLE và JOINED
+- Danh sách API khớp mục 5 của đề bài
+- Có bảng đối chiếu trang với design-reference",5,S1 Phân tích & Thiết kế,E1
+GUPPY-21,21,20,Sub-task,Vẽ ERD,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-22,22,20,Sub-task,Viết đặc tả REST API,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-23,23,20,Sub-task,Vẽ kiến trúc 4 tầng và Feature-Sliced,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-24,24,20,Sub-task,Đối chiếu design-reference với danh sách trang,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-25,25,7,Story,Khách vãng lai đặt hàng không cần tài khoản,,E7 Đặt hàng & Thanh toán,"Là khách vãng lai, tôi muốn đặt hàng chỉ với họ tên, SĐT và địa chỉ, để mua cá mà không phải tạo tài khoản.
+
+Tiêu chí chấp nhận:
+- Đặt hàng thành công khi không có JWT
+- Đơn mới ở trạng thái CHO_XAC_NHAN, liên kết KhachHang để null
+- Trả về mã đơn để tra cứu
+- Dữ liệu sai trả về lỗi kiểm tra hợp lệ","- Đặt hàng thành công khi không có JWT
+- Đơn mới ở trạng thái CHO_XAC_NHAN, liên kết KhachHang để null
+- Trả về mã đơn để tra cứu
+- Dữ liệu sai trả về lỗi kiểm tra hợp lệ",5,S5 Đặt hàng,E7
+GUPPY-26,26,25,Sub-task,API POST /api/don-hang,,,,,,S5 Đặt hàng,E7
+GUPPY-27,27,25,Sub-task,Form ThanhToan.tsx,,,,,,S5 Đặt hàng,E7
+GUPPY-28,28,25,Sub-task,Unit test DatHangUseCase,,,,,,S5 Đặt hàng,E7
+GUPPY-29,29,2,Story,Khởi tạo backend theo module,,E2 Hạ tầng,"Là lập trình viên, tôi muốn có khung Spring Boot đúng cấu trúc module 4 tầng, để thêm nghiệp vụ không phá kiến trúc.
+
+Tiêu chí chấp nhận:
+- Ứng dụng Java 21 khởi động được
+- Có 9 module và thư mục common
+- Tầng domain không phụ thuộc Spring","- Ứng dụng Java 21 khởi động được
+- Có 9 module và thư mục common
+- Tầng domain không phụ thuộc Spring",5,S2 Nền tảng,E2
+GUPPY-30,30,29,Sub-task,Tạo pom.xml và cây package,,,,,,S2 Nền tảng,E2
+GUPPY-31,31,29,Sub-task,"Viết BaseEntity, AggregateRoot",,,,,,S2 Nền tảng,E2
+GUPPY-32,32,29,Sub-task,"Viết ApiResponse, PageResponse, GlobalExceptionHandler",,,,,,S2 Nền tảng,E2
+GUPPY-33,33,2,Story,Khởi tạo frontend Feature-Sliced,,E2 Hạ tầng,"Là lập trình viên, tôi muốn có khung React đúng các tầng, để giữ đúng hướng phụ thuộc.
+
+Tiêu chí chấp nhận:
+- Vite build thành công
+- Có 5 tầng app, pages, widgets, features, entities, shared
+- Không có import ngược tầng","- Vite build thành công
+- Có 5 tầng app, pages, widgets, features, entities, shared
+- Không có import ngược tầng",3,S2 Nền tảng,E2
+GUPPY-34,34,33,Sub-task,Tạo dự án Vite và cấu hình TailwindCSS,,,,,,S2 Nền tảng,E2
+GUPPY-35,35,33,Sub-task,Viết axiosClient có interceptor JWT,,,,,,S2 Nền tảng,E2
+GUPPY-36,36,33,Sub-task,"Khai báo token màu, font, router",,,,,,S2 Nền tảng,E2
+GUPPY-37,37,2,Story,Đóng gói Docker Compose,,E2 Hạ tầng,"Là lập trình viên, tôi muốn chạy toàn hệ thống bằng một lệnh, để môi trường cả nhóm giống nhau.
+
+Tiêu chí chấp nhận:
+- docker compose up -d --build chạy đủ dịch vụ
+- Backend chờ MySQL healthy
+- Không ghi cứng bí mật, có .env.example","- docker compose up -d --build chạy đủ dịch vụ
+- Backend chờ MySQL healthy
+- Không ghi cứng bí mật, có .env.example",3,S2 Nền tảng,E2
+GUPPY-38,38,37,Sub-task,Viết Dockerfile backend,,,,,,S2 Nền tảng,E2
+GUPPY-39,39,37,Sub-task,Viết Dockerfile frontend và nginx.conf,,,,,,S2 Nền tảng,E2
+GUPPY-40,40,37,Sub-task,Viết docker-compose.yml và .env.example,,,,,,S2 Nền tảng,E2
+GUPPY-41,41,2,Story,Flyway và Swagger,,E2 Hạ tầng,"Là lập trình viên, tôi muốn có migration và tài liệu API tự động, để CSDL và API luôn đồng bộ.
+
+Tiêu chí chấp nhận:
+- Flyway chạy V1, V2 khi khởi động
+- swagger-ui.html mở được không cần đăng nhập
+- Có nút Authorize với Bearer JWT","- Flyway chạy V1, V2 khi khởi động
+- swagger-ui.html mở được không cần đăng nhập
+- Có nút Authorize với Bearer JWT",3,S2 Nền tảng,E2
+GUPPY-42,42,41,Sub-task,Viết V1__init.sql,,,,,,S2 Nền tảng,E2
+GUPPY-43,43,41,Sub-task,Viết V2__seed.sql,,,,,,S2 Nền tảng,E2
+GUPPY-44,44,41,Sub-task,"Viết OpenApiConfig, CorsConfig, JpaAuditingConfig",,,,,,S2 Nền tảng,E2
+GUPPY-45,45,3,Story,Đăng ký và đăng nhập JWT,,E3 Xác thực & Phân quyền,"Là khách hàng, tôi muốn đăng ký và đăng nhập, để dùng các chức năng dành cho thành viên.
+
+Tiêu chí chấp nhận:
+- Mật khẩu được băm
+- Đăng nhập đúng trả về JWT có vai trò
+- Sai thông tin trả về lỗi 401","- Mật khẩu được băm
+- Đăng nhập đúng trả về JWT có vai trò
+- Sai thông tin trả về lỗi 401",5,S3 Xác thực & Sản phẩm,E3
+GUPPY-46,46,45,Sub-task,"API POST /auth/dang-ky, /auth/dang-nhap",,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-47,47,45,Sub-task,Cấu hình SecurityConfig và bộ lọc JWT,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-48,48,45,Sub-task,"Trang DangNhap, DangKy",,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-49,49,3,Story,Phân quyền theo vai trò,,E3 Xác thực & Phân quyền,"Là admin, tôi muốn mỗi vai trò chỉ truy cập đúng khu vực, để bảo vệ dữ liệu cửa hàng.
+
+Tiêu chí chấp nhận:
+- Đúng quy tắc quyền cho công khai, KHACH_HANG, NHAN_VIEN, ADMIN
+- Admin dùng được chức năng của nhân viên
+- Truy cập sai quyền trả về 403","- Đúng quy tắc quyền cho công khai, KHACH_HANG, NHAN_VIEN, ADMIN
+- Admin dùng được chức năng của nhân viên
+- Truy cập sai quyền trả về 403",3,S3 Xác thực & Sản phẩm,E3
+GUPPY-50,50,49,Sub-task,Mô hình NguoiDung SINGLE_TABLE,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-51,51,49,Sub-task,Quy tắc quyền theo đường dẫn API,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-52,52,49,Sub-task,Route guard trang quản trị,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-53,53,3,Story,Hồ sơ và sổ địa chỉ,,E3 Xác thực & Phân quyền,"Là khách hàng, tôi muốn quản lý hồ sơ và sổ địa chỉ, để đặt hàng nhanh hơn.
+
+Tiêu chí chấp nhận:
+- Xem và sửa được hồ sơ
+- Thêm, sửa, xóa được địa chỉ
+- Chỉ truy cập được dữ liệu của chính mình","- Xem và sửa được hồ sơ
+- Thêm, sửa, xóa được địa chỉ
+- Chỉ truy cập được dữ liệu của chính mình",3,S3 Xác thực & Sản phẩm,E3
+GUPPY-54,54,53,Sub-task,API /khach-hang/ho-so,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-55,55,53,Sub-task,Trang hồ sơ và sổ địa chỉ,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-56,56,3,Story,Admin quản lý nhân viên,,E3 Xác thực & Phân quyền,"Là admin, tôi muốn quản lý tài khoản nhân viên, để cấp quyền đúng người.
+
+Tiêu chí chấp nhận:
+- CRUD được nhân viên
+- Nhân viên không gọi được API này","- CRUD được nhân viên
+- Nhân viên không gọi được API này",2,S3 Xác thực & Sản phẩm,E3
+GUPPY-57,57,56,Sub-task,API CRUD /admin/nhan-vien,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-58,58,56,Sub-task,Giao diện quản lý nhân viên,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-59,59,4,Story,Mô hình sản phẩm kế thừa,,E4 Danh mục sản phẩm,"Là lập trình viên, tôi muốn SanPham trừu tượng với CaGuppy và PhuKien, để mỗi loại tự tính giá.
+
+Tiêu chí chấp nhận:
+- JPA JOINED cho SanPham
+- tinhGia(soLuong) là abstract
+- Tính giá theo đơn vị bán dùng Strategy và Factory","- JPA JOINED cho SanPham
+- tinhGia(soLuong) là abstract
+- Tính giá theo đơn vị bán dùng Strategy và Factory",5,S3 Xác thực & Sản phẩm,E4
+GUPPY-60,60,59,Sub-task,"Entity SanPham, CaGuppy, PhuKien, DongCa",,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-61,61,59,Sub-task,Strategy tính giá theo đơn vị bán,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-62,62,59,Sub-task,Unit test Strategy giá,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-63,63,4,Story,Xem và lọc danh sách cá,,E4 Danh mục sản phẩm,"Là khách, tôi muốn lọc cá theo dòng, giới tính, kiểu đuôi, đơn vị và giá, để nhanh chóng tìm con mình thích.
+
+Tiêu chí chấp nhận:
+- GET /san-pham hỗ trợ đủ bộ lọc và phân trang
+- Thẻ cá có tilt và shine
+- Hiển thị giống ảnh catalog","- GET /san-pham hỗ trợ đủ bộ lọc và phân trang
+- Thẻ cá có tilt và shine
+- Hiển thị giống ảnh catalog",5,S3 Xác thực & Sản phẩm,E4
+GUPPY-64,64,63,Sub-task,"API GET /san-pham, GET /dong-ca",,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-65,65,63,Sub-task,Widget BoLocCa và feature loc-san-pham,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-66,66,63,Sub-task,Trang DanhSachCa và CardCa,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-67,67,4,Story,Xem chi tiết cá với mô hình 3D,,E4 Danh mục sản phẩm,"Là khách, tôi muốn xem cá 3D xoay 360° cùng thông số nước, để biết con cá trước khi mua.
+
+Tiêu chí chấp nhận:
+- Kéo xoay được 360°
+- Có ảnh tĩnh thay thế khi không có WebGL
+- Hiển thị giá theo đơn vị và thông số nước","- Kéo xoay được 360°
+- Có ảnh tĩnh thay thế khi không có WebGL
+- Hiển thị giá theo đơn vị và thông số nước",5,S3 Xác thực & Sản phẩm,E4
+GUPPY-68,68,67,Sub-task,API GET /san-pham/{id},,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-69,69,67,Sub-task,Mô hình cá 3D,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-70,70,67,Sub-task,Trang ChiTietCa,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-71,71,4,Story,Admin quản lý sản phẩm và dòng cá,,E4 Danh mục sản phẩm,"Là admin, tôi muốn thêm, sửa, xóa sản phẩm và dòng cá, để danh mục luôn đúng.
+
+Tiêu chí chấp nhận:
+- CRUD /admin/san-pham và /admin/dong-ca hoạt động
+- Dữ liệu sai bị từ chối","- CRUD /admin/san-pham và /admin/dong-ca hoạt động
+- Dữ liệu sai bị từ chối",3,S3 Xác thực & Sản phẩm,E4
+GUPPY-72,72,71,Sub-task,"API CRUD sản phẩm, dòng cá",,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-73,73,71,Sub-task,Trang admin/QuanLySanPham,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-74,74,4,Story,Trang chủ và bể cá 3D,,E4 Danh mục sản phẩm,"Là khách, tôi muốn thấy bể cá 3D sống động ở trang chủ, để có ấn tượng tốt về cửa hàng.
+
+Tiêu chí chấp nhận:
+- Cá tự bơi khác dòng, kiểu đuôi; có rong, bọt khí, tia sáng, caustics, bloom
+- Một con bơi theo chuột, camera nghiêng theo chuột
+- Lazy load, giảm hiệu ứng trên mobile","- Cá tự bơi khác dòng, kiểu đuôi; có rong, bọt khí, tia sáng, caustics, bloom
+- Một con bơi theo chuột, camera nghiêng theo chuột
+- Lazy load, giảm hiệu ứng trên mobile",5,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-75,75,74,Sub-task,Widget BeCa3D,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-76,76,74,Sub-task,Trang TrangChu,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-77,77,74,Sub-task,"Header, Footer, chuyển trang fade",,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-78,78,5,Story,Nhân viên quản lý lô cá,,E5 Tồn kho & Lô cá,"Là nhân viên, tôi muốn quản lý lô cá theo bể, ngày nở, số đực và cái, để biết chính xác tồn kho.
+
+Tiêu chí chấp nhận:
+- CRUD /nv/lo-ca hoạt động
+- Tồn kho tính theo lô
+- Hiển thị giống ảnh batches","- CRUD /nv/lo-ca hoạt động
+- Tồn kho tính theo lô
+- Hiển thị giống ảnh batches",5,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-79,79,78,Sub-task,Entity LoCa và repository,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-80,80,78,Sub-task,API CRUD /nv/lo-ca,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-81,81,78,Sub-task,Trang admin/QuanLyLoCa,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-82,82,5,Story,Ghi nhận hao hụt,,E5 Tồn kho & Lô cá,"Là nhân viên, tôi muốn ghi nhận cá chết, để tồn kho khớp thực tế.
+
+Tiêu chí chấp nhận:
+- PUT /nv/lo-ca/{id}/hao-hut giảm đúng số lượng
+- Không cho hao hụt vượt tồn
+- Lưu lại lịch sử biến động","- PUT /nv/lo-ca/{id}/hao-hut giảm đúng số lượng
+- Không cho hao hụt vượt tồn
+- Lưu lại lịch sử biến động",3,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-83,83,82,Sub-task,API ghi hao hụt,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-84,84,82,Sub-task,Feature quan-ly-lo,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-85,85,5,Story,Giữ và trả tồn theo sự kiện,,E5 Tồn kho & Lô cá,"Là chủ cửa hàng, tôi muốn tồn kho tự cập nhật khi đặt và hủy đơn, để không bán vượt số cá đang có.
+
+Tiêu chí chấp nhận:
+- DonHangDaTaoEvent giữ tồn
+- DonHangDaHuyEvent trả tồn
+- Không đủ tồn thì đơn bị từ chối","- DonHangDaTaoEvent giữ tồn
+- DonHangDaHuyEvent trả tồn
+- Không đủ tồn thì đơn bị từ chối",5,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-86,86,85,Sub-task,Listener giữ tồn,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-87,87,85,Sub-task,Listener trả tồn,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-88,88,85,Sub-task,Test tích hợp giữ và trả tồn,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-89,89,6,Story,Giỏ hàng theo session,,E6 Giỏ hàng,"Là khách vãng lai, tôi muốn có giỏ hàng không cần đăng nhập, để chọn cá trước khi đặt.
+
+Tiêu chí chấp nhận:
+- Giỏ gắn với header X-Session-Id
+- Thêm, sửa số lượng, xóa được
+- Trùng sản phẩm và đơn vị thì cộng dồn số lượng","- Giỏ gắn với header X-Session-Id
+- Thêm, sửa số lượng, xóa được
+- Trùng sản phẩm và đơn vị thì cộng dồn số lượng",5,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-90,90,89,Sub-task,API CRUD /gio-hang,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-91,91,89,Sub-task,Feature them-vao-gio,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-92,92,89,Sub-task,Trang GioHang,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-93,93,6,Story,Gộp giỏ khi đăng nhập,,E6 Giỏ hàng,"Là khách hàng, tôi muốn giỏ vãng lai được gộp vào tài khoản khi đăng nhập, để không mất cá đã chọn.
+
+Tiêu chí chấp nhận:
+- Sau đăng nhập giỏ session gộp vào giỏ tài khoản
+- Dòng trùng được cộng số lượng
+- Giỏ session bị xóa sau khi gộp","- Sau đăng nhập giỏ session gộp vào giỏ tài khoản
+- Dòng trùng được cộng số lượng
+- Giỏ session bị xóa sau khi gộp",3,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-94,94,93,Sub-task,Use case gộp giỏ,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-95,95,93,Sub-task,Gọi gộp giỏ ở frontend sau đăng nhập,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-96,96,7,Story,Aggregate DonHang và State,,E7 Đặt hàng & Thanh toán,"Là lập trình viên, tôi muốn DonHang là Aggregate Root dùng State pattern, để không có chuyển trạng thái sai.
+
+Tiêu chí chấp nhận:
+- Không có setter cho trangThai
+- Chuyển trạng thái không hợp lệ ném BusinessException
+- Composition ChiTietDonHang và ThongTinNguoiNhan","- Không có setter cho trangThai
+- Chuyển trạng thái không hợp lệ ném BusinessException
+- Composition ChiTietDonHang và ThongTinNguoiNhan",8,S5 Đặt hàng,E7
+GUPPY-97,97,96,Sub-task,"Entity DonHang, ChiTietDonHang, ThongTinNguoiNhan",,,,,,S5 Đặt hàng,E7
+GUPPY-98,98,96,Sub-task,Các lớp State trạng thái đơn,,,,,,S5 Đặt hàng,E7
+GUPPY-99,99,96,Sub-task,Unit test State đơn,,,,,,S5 Đặt hàng,E7
+GUPPY-100,100,7,Story,Thanh toán COD và chuyển khoản,,E7 Đặt hàng & Thanh toán,"Là người mua, tôi muốn chọn COD hoặc chuyển khoản, để thanh toán theo cách thuận tiện.
+
+Tiêu chí chấp nhận:
+- ThanhToan abstract có thucHien()
+- JPA SINGLE_TABLE cho ThanhToan
+- Chọn phương thức qua Strategy và Factory","- ThanhToan abstract có thucHien()
+- JPA SINGLE_TABLE cho ThanhToan
+- Chọn phương thức qua Strategy và Factory",5,S5 Đặt hàng,E7
+GUPPY-101,101,100,Sub-task,"Entity ThanhToanCOD, ThanhToanChuyenKhoan",,,,,,S5 Đặt hàng,E7
+GUPPY-102,102,100,Sub-task,Factory chọn phương thức,,,,,,S5 Đặt hàng,E7
+GUPPY-103,103,100,Sub-task,Khối chọn thanh toán trên ThanhToan.tsx,,,,,,S5 Đặt hàng,E7
+GUPPY-104,104,7,Story,Tra cứu đơn bằng mã và SĐT,,E7 Đặt hàng & Thanh toán,"Là khách vãng lai, tôi muốn tra cứu đơn bằng mã đơn và SĐT, để theo dõi đơn không cần tài khoản.
+
+Tiêu chí chấp nhận:
+- Sai mã hoặc SĐT trả về không tìm thấy
+- Có thanh trạng thái với cá chạy dọc
+- Đơn GP24110931, SĐT 0901234567 tra cứu được","- Sai mã hoặc SĐT trả về không tìm thấy
+- Có thanh trạng thái với cá chạy dọc
+- Đơn GP24110931, SĐT 0901234567 tra cứu được",3,S5 Đặt hàng,E7
+GUPPY-105,105,104,Sub-task,API GET /don-hang/tra-cuu,,,,,,S5 Đặt hàng,E7
+GUPPY-106,106,104,Sub-task,Trang TraCuuDon và widget ThanhTrangThaiDon,,,,,,S5 Đặt hàng,E7
+GUPPY-107,107,7,Story,Khách hủy đơn chờ xác nhận,,E7 Đặt hàng & Thanh toán,"Là khách vãng lai, tôi muốn hủy đơn còn Chờ xác nhận, để đổi ý mà không phải gọi điện.
+
+Tiêu chí chấp nhận:
+- Chỉ hủy được khi đơn còn CHO_XAC_NHAN
+- Hủy xong đơn sang DA_HUY và trả tồn
+- Phải khớp SĐT của đơn","- Chỉ hủy được khi đơn còn CHO_XAC_NHAN
+- Hủy xong đơn sang DA_HUY và trả tồn
+- Phải khớp SĐT của đơn",3,S5 Đặt hàng,E7
+GUPPY-108,108,107,Sub-task,API PUT /don-hang/{maDon}/huy,,,,,,S5 Đặt hàng,E7
+GUPPY-109,109,107,Sub-task,Nút hủy đơn trên TraCuuDon,,,,,,S5 Đặt hàng,E7
+GUPPY-110,110,8,Story,Nhân viên duyệt đơn,,E8 Quản lý đơn,"Là nhân viên, tôi muốn xem đơn theo trạng thái và chuyển trạng thái, để xử lý đơn đúng quy trình.
+
+Tiêu chí chấp nhận:
+- GET /nv/don-hang lọc được theo trạng thái
+- PUT trạng thái tuân theo State
+- Hiển thị bảng đơn giống ảnh orders","- GET /nv/don-hang lọc được theo trạng thái
+- PUT trạng thái tuân theo State
+- Hiển thị bảng đơn giống ảnh orders",5,S5 Đặt hàng,E8
+GUPPY-111,111,110,Sub-task,API /nv/don-hang,,,,,,S5 Đặt hàng,E8
+GUPPY-112,112,110,Sub-task,Feature duyet-don và widget BangDonHang,,,,,,S5 Đặt hàng,E8
+GUPPY-113,113,110,Sub-task,Trang admin/QuanLyDon,,,,,,S5 Đặt hàng,E8
+GUPPY-114,114,8,Story,Lịch sử đơn của khách hàng,,E8 Quản lý đơn,"Là khách hàng, tôi muốn xem lịch sử đơn, để theo dõi các lần mua.
+
+Tiêu chí chấp nhận:
+- Chỉ thấy đơn của chính mình
+- Có phân trang
+- Đơn đặt khi đã đăng nhập được liên kết với tài khoản","- Chỉ thấy đơn của chính mình
+- Có phân trang
+- Đơn đặt khi đã đăng nhập được liên kết với tài khoản",3,S5 Đặt hàng,E8
+GUPPY-115,115,114,Sub-task,API /khach-hang/don-hang,,,,,,S5 Đặt hàng,E8
+GUPPY-116,116,114,Sub-task,Trang lịch sử đơn,,,,,,S5 Đặt hàng,E8
+GUPPY-117,117,9,Story,Mã giảm giá,,E9 Khuyến mãi & Đánh giá,"Là admin, tôi muốn tạo mã giảm giá theo %, có hạn dùng, để chạy khuyến mãi.
+
+Tiêu chí chấp nhận:
+- CRUD /admin/ma-giam-gia hoạt động
+- Mã hết hạn bị từ chối khi đặt hàng
+- Tổng tiền trừ đúng %","- CRUD /admin/ma-giam-gia hoạt động
+- Mã hết hạn bị từ chối khi đặt hàng
+- Tổng tiền trừ đúng %",5,S6 Hoàn thiện,E9
+GUPPY-118,118,117,Sub-task,Entity và API mã giảm giá,,,,,,S6 Hoàn thiện,E9
+GUPPY-119,119,117,Sub-task,Áp mã khi đặt hàng,,,,,,S6 Hoàn thiện,E9
+GUPPY-120,120,117,Sub-task,Ô nhập mã trên ThanhToan.tsx,,,,,,S6 Hoàn thiện,E9
+GUPPY-121,121,9,Story,Đánh giá sản phẩm,,E9 Khuyến mãi & Đánh giá,"Là khách hàng, tôi muốn đánh giá cá đã mua, để giúp người mua sau.
+
+Tiêu chí chấp nhận:
+- POST /danh-gia chỉ cho khách có đơn HOAN_TAT chứa sản phẩm đó
+- Điểm trung bình hiển thị ở trang chi tiết","- POST /danh-gia chỉ cho khách có đơn HOAN_TAT chứa sản phẩm đó
+- Điểm trung bình hiển thị ở trang chi tiết",3,S6 Hoàn thiện,E9
+GUPPY-122,122,121,Sub-task,Entity và API đánh giá,,,,,,S6 Hoàn thiện,E9
+GUPPY-123,123,121,Sub-task,Khối đánh giá trên ChiTietCa,,,,,,S6 Hoàn thiện,E9
+GUPPY-124,124,9,Story,Bảo hành cá chết trong 24h,,E9 Khuyến mãi & Đánh giá,"Là khách hàng, tôi muốn yêu cầu bảo hành khi cá chết trong 24h, để được xử lý quyền lợi.
+
+Tiêu chí chấp nhận:
+- POST /bao-hanh chỉ nhận trong 24h kể từ HOAN_TAT
+- Đơn chuyển HOAN_TAT → BAO_HANH → HOAN_TAT
+- Quá 24h trả về lỗi nghiệp vụ","- POST /bao-hanh chỉ nhận trong 24h kể từ HOAN_TAT
+- Đơn chuyển HOAN_TAT → BAO_HANH → HOAN_TAT
+- Quá 24h trả về lỗi nghiệp vụ",5,S6 Hoàn thiện,E9
+GUPPY-125,125,124,Sub-task,Trạng thái BAO_HANH và API /bao-hanh,,,,,,S6 Hoàn thiện,E9
+GUPPY-126,126,124,Sub-task,Nút báo cá chết trên giao diện đơn,,,,,,S6 Hoàn thiện,E9
+GUPPY-127,127,10,Story,Bảng thống kê cho admin,,E10 Thống kê,"Là admin, tôi muốn xem doanh thu, đơn theo trạng thái, tồn và hao hụt, để ra quyết định kinh doanh.
+
+Tiêu chí chấp nhận:
+- GET /admin/thong-ke trả số liệu thật từ CSDL
+- Biểu đồ dùng Recharts
+- Hiển thị giống ảnh admin","- GET /admin/thong-ke trả số liệu thật từ CSDL
+- Biểu đồ dùng Recharts
+- Hiển thị giống ảnh admin",5,S6 Hoàn thiện,E10
+GUPPY-128,128,127,Sub-task,API /admin/thong-ke,,,,,,S6 Hoàn thiện,E10
+GUPPY-129,129,127,Sub-task,Trang admin/TongQuan,,,,,,S6 Hoàn thiện,E10
+GUPPY-130,130,11,Story,Unit test nghiệp vụ lõi,,E11 Kiểm thử & Triển khai,"Là lập trình viên, tôi muốn có unit test nghiệp vụ lõi, để sửa code không gây lỗi ngầm.
+
+Tiêu chí chấp nhận:
+- Test DatHangUseCase, State đơn, Strategy giá đều qua
+- mvn test chạy được trong Docker","- Test DatHangUseCase, State đơn, Strategy giá đều qua
+- mvn test chạy được trong Docker",5,S6 Hoàn thiện,E11
+GUPPY-131,131,130,Sub-task,Hoàn thiện test DatHangUseCase,,,,,,S6 Hoàn thiện,E11
+GUPPY-132,132,130,Sub-task,Hoàn thiện test State và Strategy,,,,,,S6 Hoàn thiện,E11
+GUPPY-133,133,11,Story,Đối chiếu giao diện với ảnh mẫu,,E11 Kiểm thử & Triển khai,"Là thành viên nhóm, tôi muốn so từng trang với screenshots, để giao diện đúng thiết kế.
+
+Tiêu chí chấp nhận:
+- Đã so đủ 10 trang có ảnh
+- Responsive trên mobile
+- Có ảnh tĩnh thay thế khi không có WebGL","- Đã so đủ 10 trang có ảnh
+- Responsive trên mobile
+- Có ảnh tĩnh thay thế khi không có WebGL",3,S6 Hoàn thiện,E11
+GUPPY-134,134,133,Sub-task,So từng trang và sửa sai lệch,,,,,,S6 Hoàn thiện,E11
+GUPPY-135,135,133,Sub-task,Kiểm tra responsive và fallback 3D,,,,,,S6 Hoàn thiện,E11
+GUPPY-136,136,11,Story,README và chạy thử bằng Docker,,E11 Kiểm thử & Triển khai,"Là giảng viên chấm đồ án, tôi muốn có hướng dẫn chạy rõ ràng, để khởi động dự án từ máy trắng.
+
+Tiêu chí chấp nhận:
+- README có cách chạy và tài khoản mẫu
+- Chạy được từ máy trắng bằng docker compose
+- Luồng đặt hàng hoạt động từ đầu đến cuối","- README có cách chạy và tài khoản mẫu
+- Chạy được từ máy trắng bằng docker compose
+- Luồng đặt hàng hoạt động từ đầu đến cuối",3,S6 Hoàn thiện,E11
+GUPPY-137,137,136,Sub-task,Viết README,,,,,,S6 Hoàn thiện,E11
+GUPPY-138,138,136,Sub-task,Chạy thử toàn bộ bằng Docker,,,,,,S6 Hoàn thiện,E11
+GUPPY-139,139,1,Story,Chốt các điểm lệch giữa đề bài và thiết kế,,E1 Phân tích & Thiết kế,"Là thành viên nhóm, tôi muốn chốt các điểm lệch giữa đề bài và thiết kế, để không phải làm lại khi đang code. Điểm lệch: L1, L2.
+
+Tiêu chí chấp nhận:
+- Chủ dự án xác nhận danh sách dòng cá và quy tắc hủy đơn
+- Tài liệu đối chiếu ghi rõ quyết định cuối","- Chủ dự án xác nhận danh sách dòng cá và quy tắc hủy đơn
+- Tài liệu đối chiếu ghi rõ quyết định cuối",2,S1 Phân tích & Thiết kế,E1
+GUPPY-140,140,139,Sub-task,Xác nhận danh sách dòng cá,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-141,141,139,Sub-task,Xác nhận trạng thái được hủy đơn,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-142,142,139,Sub-task,Cập nhật tài liệu đối chiếu,,,,,,S1 Phân tích & Thiết kế,E1
+GUPPY-143,143,2,Story,Căn chỉnh thư viện và kiến trúc frontend,,E2 Hạ tầng,"Là lập trình viên, tôi muốn dùng đúng thư viện của đề bài và bỏ các import ngược trong source mẫu, để giao diện giống ảnh mà vẫn đúng kiến trúc. Điểm lệch: L3, L22.
+
+Tiêu chí chấp nhận:
+- Chạy React 18 cùng bộ fiber, drei, postprocessing tương thích
+- Dùng BrowserRouter, nginx trả index.html cho mọi route
+- Không còn import từ page sang page hoặc từ widget sang widget","- Chạy React 18 cùng bộ fiber, drei, postprocessing tương thích
+- Dùng BrowserRouter, nginx trả index.html cho mọi route
+- Không còn import từ page sang page hoặc từ widget sang widget",3,S2 Nền tảng,E2
+GUPPY-144,144,143,Sub-task,Chốt phiên bản thư viện React 18,,,,,,S2 Nền tảng,E2
+GUPPY-145,145,143,Sub-task,Cấu hình shadcn/ui theo token màu của thiết kế,,,,,,S2 Nền tảng,E2
+GUPPY-146,146,143,Sub-task,Cấu hình BrowserRouter và nginx fallback,,,,,,S2 Nền tảng,E2
+GUPPY-147,147,143,Sub-task,"Tách OrderSummary, Logo, AdminLayout đúng tầng",,,,,,S2 Nền tảng,E2
+GUPPY-148,148,4,Story,Bổ sung dữ liệu hiển thị cho cá,,E4 Danh mục sản phẩm,"Là khách, tôi muốn thẻ và trang chi tiết có đủ thông tin như thiết kế, để đánh giá con cá trước khi mua. Điểm lệch: L6.
+
+Tiêu chí chấp nhận:
+- DongCa có xuất xứ, họa tiết và bảng màu
+- CaGuppy có slug, nhãn, kích thước, tuổi, độ cứng nước, thông số nước riêng trong khoảng 22–28°C và pH 6.8–7.8
+- Điểm đánh giá và số đã bán tính từ dữ liệu thật","- DongCa có xuất xứ, họa tiết và bảng màu
+- CaGuppy có slug, nhãn, kích thước, tuổi, độ cứng nước, thông số nước riêng trong khoảng 22–28°C và pH 6.8–7.8
+- Điểm đánh giá và số đã bán tính từ dữ liệu thật",5,S3 Xác thực & Sản phẩm,E4
+GUPPY-149,149,148,Sub-task,Thêm cột vào V1__init.sql,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-150,150,148,Sub-task,Trả các trường mới trong DTO sản phẩm,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-151,151,148,Sub-task,Vẽ GuppySvg từ dữ liệu API,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-152,152,4,Story,Đơn vị bán có giới tính,,E4 Danh mục sản phẩm,"Là khách, tôi muốn mua lẻ đực hoặc lẻ cái với giá riêng, để chọn đúng con cần. Điểm lệch: L4.
+
+Tiêu chí chấp nhận:
+- Giữ 4 đơn vị CON_LE, CAP, BO_BA, LO_CA_BOT
+- CON_LE đi kèm giới tính và giá riêng
+- Tồn cặp, bộ ba, lô bột tính đúng theo số đực, cái, bột","- Giữ 4 đơn vị CON_LE, CAP, BO_BA, LO_CA_BOT
+- CON_LE đi kèm giới tính và giá riêng
+- Tồn cặp, bộ ba, lô bột tính đúng theo số đực, cái, bột",3,S3 Xác thực & Sản phẩm,E4
+GUPPY-153,153,152,Sub-task,Lưu bảng giá theo đơn vị và giới tính,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-154,154,152,Sub-task,Tính tồn khả dụng theo đơn vị,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-155,155,152,Sub-task,Thẻ chọn đơn vị trên ChiTietCa,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-156,156,4,Story,Mở rộng API lọc sản phẩm,,E4 Danh mục sản phẩm,"Là khách, tôi muốn tìm kiếm, sắp xếp và chọn nhiều giá trị lọc, để bộ lọc chạy đúng như thiết kế. Điểm lệch: L5.
+
+Tiêu chí chấp nhận:
+- GET /san-pham nhận thêm q, sapXep và nhiều giá trị dong, kieuDuoi, donVi, gioiTinh
+- Xem chi tiết được bằng slug trên URL
+- Thanh giá trên giao diện gửi giaMax","- GET /san-pham nhận thêm q, sapXep và nhiều giá trị dong, kieuDuoi, donVi, gioiTinh
+- Xem chi tiết được bằng slug trên URL
+- Thanh giá trên giao diện gửi giaMax",3,S3 Xác thực & Sản phẩm,E4
+GUPPY-157,157,156,Sub-task,Bổ sung truy vấn lọc và sắp xếp,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-158,158,156,Sub-task,API GET /san-pham/slug/{slug},,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-159,159,156,Sub-task,Đồng bộ bộ lọc với query string,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-160,160,3,Story,Giao diện theo vai trò JWT,,E3 Xác thực & Phân quyền,"Là nhân viên, tôi muốn giao diện quản trị hiển thị đúng quyền của mình, để không thấy chức năng không được dùng. Điểm lệch: L14.
+
+Tiêu chí chấp nhận:
+- Bỏ công tắc Admin/Nhân viên
+- Menu và thẻ tài khoản lấy theo JWT
+- Khách không thấy biểu tượng quản trị trên Header","- Bỏ công tắc Admin/Nhân viên
+- Menu và thẻ tài khoản lấy theo JWT
+- Khách không thấy biểu tượng quản trị trên Header",3,S3 Xác thực & Sản phẩm,E3
+GUPPY-161,161,160,Sub-task,Store phiên đăng nhập bằng Zustand,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-162,162,160,Sub-task,Lọc menu quản trị theo vai trò,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-163,163,160,Sub-task,Điều hướng nhân viên khỏi trang Tổng quan,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-164,164,3,Story,Hoàn thiện trang đăng nhập và đăng ký,,E3 Xác thực & Phân quyền,"Là khách hàng, tôi muốn đăng nhập và đăng ký trên 2 đường dẫn riêng mà vẫn giữ giao diện tab, để đúng cấu trúc trang và giống ảnh. Điểm lệch: L15.
+
+Tiêu chí chấp nhận:
+- DangNhap và DangKy dùng chung AuthCard, bấm tab sẽ đổi route
+- Đăng nhập bằng email hoặc SĐT, có hiện và ẩn mật khẩu
+- Ghi nhớ quyết định lưu phiên lâu dài hay theo tab; Quên mật khẩu báo liên hệ cửa hàng","- DangNhap và DangKy dùng chung AuthCard, bấm tab sẽ đổi route
+- Đăng nhập bằng email hoặc SĐT, có hiện và ẩn mật khẩu
+- Ghi nhớ quyết định lưu phiên lâu dài hay theo tab; Quên mật khẩu báo liên hệ cửa hàng",2,S3 Xác thực & Sản phẩm,E3
+GUPPY-165,165,164,Sub-task,"Form đăng nhập, đăng ký với React Hook Form và Zod",,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-166,166,164,Sub-task,Xử lý Ghi nhớ và Quên mật khẩu,,,,,,S3 Xác thực & Sản phẩm,E3
+GUPPY-167,167,4,Story,Seed dữ liệu 7 dòng cá,,E4 Danh mục sản phẩm,"Là thành viên nhóm, tôi muốn dữ liệu mẫu khớp 7 dòng của đề bài, để cửa hàng hiển thị nhất quán. Điểm lệch: L1.
+
+Tiêu chí chấp nhận:
+- Có đủ 7 dòng, tên hiển thị Rồng Đỏ, Koi Tricolor, Albino Full Red, Black Mosaic được ánh xạ từ Dragon, Koi, Albino, Mosaic
+- Thiết kế bảng màu mới cho Tuxedo
+- Có khoảng 20 sản phẩm gồm cá và phụ kiện
+- Sửa dòng chữ 8 dòng và 40+ dòng cá cho đúng dữ liệu","- Có đủ 7 dòng, tên hiển thị Rồng Đỏ, Koi Tricolor, Albino Full Red, Black Mosaic được ánh xạ từ Dragon, Koi, Albino, Mosaic
+- Thiết kế bảng màu mới cho Tuxedo
+- Có khoảng 20 sản phẩm gồm cá và phụ kiện
+- Sửa dòng chữ 8 dòng và 40+ dòng cá cho đúng dữ liệu",3,S3 Xác thực & Sản phẩm,E4
+GUPPY-168,168,167,Sub-task,Thiết kế bảng màu Tuxedo,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-169,169,167,Sub-task,Viết seed dòng cá và sản phẩm,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-170,170,167,Sub-task,Cập nhật nội dung hero trang chủ,,,,,,S3 Xác thực & Sản phẩm,E4
+GUPPY-171,171,4,Story,Hiển thị phụ kiện,,E4 Danh mục sản phẩm,"Là khách, tôi muốn xem và mua thức ăn, bể, lọc, thuốc, để mua đủ đồ cùng lúc với cá. Điểm lệch: L17.
+
+Tiêu chí chấp nhận:
+- Lọc được theo loại Cá và Phụ kiện
+- Thẻ phụ kiện không hiện bộ lọc cá và cá SVG
+- Trang chi tiết phụ kiện không hiện 3D và thông số nước","- Lọc được theo loại Cá và Phụ kiện
+- Thẻ phụ kiện không hiện bộ lọc cá và cá SVG
+- Trang chi tiết phụ kiện không hiện 3D và thông số nước",3,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-172,172,171,Sub-task,Bộ lọc loại sản phẩm,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-173,173,171,Sub-task,Biến thể thẻ phụ kiện,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-174,174,171,Sub-task,Biến thể trang chi tiết phụ kiện,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-175,175,4,Story,Ảnh tĩnh thay thế 3D và giảm hiệu ứng,,E4 Danh mục sản phẩm,"Là khách dùng máy yếu, tôi muốn trang vẫn hiển thị tốt khi không có WebGL, để xem và mua được cá. Điểm lệch: L21.
+
+Tiêu chí chấp nhận:
+- Không có WebGL thì hiện ảnh tĩnh
+- Mobile giảm số cá, tắt hậu kỳ
+- Tôn trọng prefers-reduced-motion","- Không có WebGL thì hiện ảnh tĩnh
+- Mobile giảm số cá, tắt hậu kỳ
+- Tôn trọng prefers-reduced-motion",3,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-176,176,175,Sub-task,Kiểm tra WebGL và tạo ảnh tĩnh,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-177,177,175,Sub-task,Cấu hình hiệu ứng theo thiết bị,,,,,,S4 Tồn kho & Giỏ hàng,E4
+GUPPY-178,178,5,Story,Nghiệp vụ lô cá theo thiết kế,,E5 Tồn kho & Lô cá,"Là nhân viên, tôi muốn nhập đẻ, phân giới và xem nhật ký kho, để dùng đủ các nút trên trang Lô cá. Điểm lệch: L7.
+
+Tiêu chí chấp nhận:
+- LoCa có mã lô, dòng cá, bố mẹ, số cá bột, giai đoạn
+- Có API nhập đẻ và phân giới, không cho phân giới vượt số cá bột
+- Mọi biến động được ghi vào nhật ký kho và hiển thị trên trang","- LoCa có mã lô, dòng cá, bố mẹ, số cá bột, giai đoạn
+- Có API nhập đẻ và phân giới, không cho phân giới vượt số cá bột
+- Mọi biến động được ghi vào nhật ký kho và hiển thị trên trang",5,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-179,179,178,Sub-task,Entity BienDongKho,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-180,180,178,Sub-task,"API POST /nv/lo-ca/{id}/nhap-de, /phan-gioi",,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-181,181,178,Sub-task,API GET /nv/lo-ca/bien-dong,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-182,182,178,Sub-task,Nối 3 nút và bảng nhật ký trên QuanLyLoCa,,,,,,S4 Tồn kho & Giỏ hàng,E5
+GUPPY-183,183,6,Story,Giỏ hàng lấy từ server,,E6 Giỏ hàng,"Là khách, tôi muốn giỏ hàng lưu ở server, để số lượng và giá luôn đúng. Điểm lệch: L13.
+
+Tiêu chí chấp nhận:
+- Bỏ 3 dòng giỏ giả lập, giỏ mới là trống
+- Tạo X-Session-Id khi truy cập lần đầu
+- Số trên Header bằng tổng số lượng từ API","- Bỏ 3 dòng giỏ giả lập, giỏ mới là trống
+- Tạo X-Session-Id khi truy cập lần đầu
+- Số trên Header bằng tổng số lượng từ API",3,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-184,184,183,Sub-task,Tạo và lưu X-Session-Id,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-185,185,183,Sub-task,Hook giỏ hàng bằng TanStack Query,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-186,186,183,Sub-task,Trạng thái giỏ trống,,,,,,S4 Tồn kho & Giỏ hàng,E6
+GUPPY-187,187,7,Story,Áp quy tắc hủy đơn của đề bài,,E7 Đặt hàng & Thanh toán,"Là nhân viên, tôi muốn nút hủy khớp quy tắc nghiệp vụ, để không hủy nhầm trạng thái. Điểm lệch: L2.
+
+Tiêu chí chấp nhận:
+- Nhân viên hủy được ở CHO_XAC_NHAN, DA_XAC_NHAN, DANG_GIAO
+- Không hủy được ở DANG_DONG_GOI
+- Khách chỉ hủy ở CHO_XAC_NHAN
+- Sửa dòng chữ chỉ hủy được trước khi giao","- Nhân viên hủy được ở CHO_XAC_NHAN, DA_XAC_NHAN, DANG_GIAO
+- Không hủy được ở DANG_DONG_GOI
+- Khách chỉ hủy ở CHO_XAC_NHAN
+- Sửa dòng chữ chỉ hủy được trước khi giao",2,S5 Đặt hàng,E7
+GUPPY-188,188,187,Sub-task,Áp quy tắc trong các lớp State,,,,,,S5 Đặt hàng,E7
+GUPPY-189,189,187,Sub-task,Hiện nút hủy theo dữ liệu từ API,,,,,,S5 Đặt hàng,E7
+GUPPY-190,190,7,Story,Lưu lịch sử trạng thái đơn,,E7 Đặt hàng & Thanh toán,"Là khách, tôi muốn thấy thời gian từng bước của đơn, để biết đơn đang ở đâu. Điểm lệch: L11.
+
+Tiêu chí chấp nhận:
+- Mỗi lần chuyển trạng thái lưu lại thời gian
+- API tra cứu trả về lịch sử
+- Thanh trạng thái hiển thị đúng thời gian thật","- Mỗi lần chuyển trạng thái lưu lại thời gian
+- API tra cứu trả về lịch sử
+- Thanh trạng thái hiển thị đúng thời gian thật",3,S5 Đặt hàng,E7
+GUPPY-191,191,190,Sub-task,Entity LichSuTrangThai,,,,,,S5 Đặt hàng,E7
+GUPPY-192,192,190,Sub-task,Trả lịch sử trong DTO đơn hàng,,,,,,S5 Đặt hàng,E7
+GUPPY-193,193,190,Sub-task,Nối ThanhTrangThaiDon với lịch sử,,,,,,S5 Đặt hàng,E7
+GUPPY-194,194,7,Story,"Phí giao, thành phố và ghi chú",,E7 Đặt hàng & Thanh toán,"Là người mua, tôi muốn biết phí giao và khu vực giao, để tính đúng tổng tiền. Điểm lệch: L8.
+
+Tiêu chí chấp nhận:
+- Backend tính phí 50.000đ, miễn phí từ 500.000đ
+- Chỉ nhận TP. Hồ Chí Minh, Hà Nội, Đà Nẵng
+- ThongTinNguoiNhan có thành phố và ghi chú","- Backend tính phí 50.000đ, miễn phí từ 500.000đ
+- Chỉ nhận TP. Hồ Chí Minh, Hà Nội, Đà Nẵng
+- ThongTinNguoiNhan có thành phố và ghi chú",3,S5 Đặt hàng,E7
+GUPPY-195,195,194,Sub-task,Tính phí giao ở backend,,,,,,S5 Đặt hàng,E7
+GUPPY-196,196,194,Sub-task,Kiểm tra thành phố,,,,,,S5 Đặt hàng,E7
+GUPPY-197,197,194,Sub-task,Nối OrderSummary với số liệu API,,,,,,S5 Đặt hàng,E7
+GUPPY-198,198,7,Story,Bỏ luồng đặt trước khỏi giao diện,,E7 Đặt hàng & Thanh toán,"Là khách, tôi muốn biết rõ sản phẩm hết hàng, để không đặt nhầm thứ cửa hàng chưa nhận đặt trước. Điểm lệch: L9.
+
+Tiêu chí chấp nhận:
+- Không còn nhãn Đặt trước
+- Hết hàng thì khóa nút mua và hiện Hết hàng","- Không còn nhãn Đặt trước
+- Hết hàng thì khóa nút mua và hiện Hết hàng",1,S5 Đặt hàng,E7
+GUPPY-199,199,198,Sub-task,Bỏ nhãn và dòng Đặt trước,,,,,,S5 Đặt hàng,E7
+GUPPY-200,200,198,Sub-task,Khóa nút mua khi hết hàng,,,,,,S5 Đặt hàng,E7
+GUPPY-201,201,7,Story,Thanh toán chuyển khoản qua cổng giả lập,,E7 Đặt hàng & Thanh toán,"Là người mua, tôi muốn chuyển khoản theo QR, để thanh toán không cần tiền mặt. Điểm lệch: L10.
+
+Tiêu chí chấp nhận:
+- Có lớp cổng thanh toán giả lập, không gọi ngân hàng thật
+- Nhân viên xác nhận đã nhận tiền
+- Đổi chữ xác nhận tự động cho đúng
+- Nội dung chuyển khoản có mã đơn thật","- Có lớp cổng thanh toán giả lập, không gọi ngân hàng thật
+- Nhân viên xác nhận đã nhận tiền
+- Đổi chữ xác nhận tự động cho đúng
+- Nội dung chuyển khoản có mã đơn thật",3,S5 Đặt hàng,E7
+GUPPY-202,202,201,Sub-task,Interface CongThanhToan và bản giả lập,,,,,,S5 Đặt hàng,E7
+GUPPY-203,203,201,Sub-task,API nhân viên xác nhận đã thanh toán,,,,,,S5 Đặt hàng,E7
+GUPPY-204,204,201,Sub-task,Hiển thị QR sau khi có mã đơn,,,,,,S5 Đặt hàng,E7
+GUPPY-205,205,8,Story,Seed đơn và lô khớp ảnh mẫu,,E8 Quản lý đơn,"Là thành viên nhóm, tôi muốn đơn và lô mẫu khớp dữ liệu 7 dòng, để so giao diện với ảnh mà không lệch tổng tiền. Điểm lệch: L1.
+
+Tiêu chí chấp nhận:
+- GP24110931, SĐT 0901234567 vẫn tổng 255.000đ, đổi Galaxy Neon thành sản phẩm Tuxedo cùng giá
+- Thay các đơn và lô đang dùng Moscow Blue, Galaxy Neon
+- Có 1 admin và 1 nhân viên","- GP24110931, SĐT 0901234567 vẫn tổng 255.000đ, đổi Galaxy Neon thành sản phẩm Tuxedo cùng giá
+- Thay các đơn và lô đang dùng Moscow Blue, Galaxy Neon
+- Có 1 admin và 1 nhân viên",2,S5 Đặt hàng,E8
+GUPPY-206,206,205,Sub-task,Viết seed đơn và lịch sử trạng thái,,,,,,S5 Đặt hàng,E8
+GUPPY-207,207,205,Sub-task,Viết seed lô cá và nhật ký kho,,,,,,S5 Đặt hàng,E8
+GUPPY-208,208,9,Story,Hiển thị giảm giá trên đơn,,E9 Khuyến mãi & Đánh giá,"Là người mua, tôi muốn thấy số tiền được giảm, để biết mã đã áp dụng đúng. Điểm lệch: L18.
+
+Tiêu chí chấp nhận:
+- OrderSummary có dòng giảm giá
+- Báo lỗi rõ khi mã sai hoặc hết hạn
+- Đơn tra cứu hiển thị số tiền giảm","- OrderSummary có dòng giảm giá
+- Báo lỗi rõ khi mã sai hoặc hết hạn
+- Đơn tra cứu hiển thị số tiền giảm",2,S6 Hoàn thiện,E9
+GUPPY-209,209,208,Sub-task,Thêm dòng giảm giá vào OrderSummary,,,,,,S6 Hoàn thiện,E9
+GUPPY-210,210,208,Sub-task,Hiển thị giảm giá trên TraCuuDon,,,,,,S6 Hoàn thiện,E9
+GUPPY-211,211,9,Story,Bảo hành đúng đối tượng và trạng thái,,E9 Khuyến mãi & Đánh giá,"Là khách hàng, tôi muốn gửi yêu cầu bảo hành trong tài khoản, để được xử lý cá chết. Điểm lệch: L12.
+
+Tiêu chí chấp nhận:
+- Nút báo cá chết chỉ hiện khi đã đăng nhập và đơn thuộc tài khoản
+- Khách vãng lai thấy hướng dẫn đăng nhập hoặc liên hệ
+- Kèm mô tả và đường dẫn video, không tải tệp
+- Bảng đơn và thanh trạng thái hiển thị Bảo hành","- Nút báo cá chết chỉ hiện khi đã đăng nhập và đơn thuộc tài khoản
+- Khách vãng lai thấy hướng dẫn đăng nhập hoặc liên hệ
+- Kèm mô tả và đường dẫn video, không tải tệp
+- Bảng đơn và thanh trạng thái hiển thị Bảo hành",3,S6 Hoàn thiện,E9
+GUPPY-212,212,211,Sub-task,Form yêu cầu bảo hành,,,,,,S6 Hoàn thiện,E9
+GUPPY-213,213,211,Sub-task,Thêm cột Bảo hành vào BangDonHang,,,,,,S6 Hoàn thiện,E9
+GUPPY-214,214,211,Sub-task,Thêm trạng thái Bảo hành vào ThanhTrangThaiDon,,,,,,S6 Hoàn thiện,E9
+GUPPY-215,215,9,Story,Thiết kế các trang chưa có mẫu,,E9 Khuyến mãi & Đánh giá,"Là thành viên nhóm, tôi muốn các trang không có ảnh mẫu vẫn cùng phong cách, để toàn site nhất quán. Điểm lệch: L16.
+
+Tiêu chí chấp nhận:
+- Có giao diện QuanLySanPham, Khuyến mãi, Tài khoản, hồ sơ, sổ địa chỉ, lịch sử đơn
+- Chỉ dùng token màu, font và component chung
+- Có trạng thái đang tải, trống và lỗi","- Có giao diện QuanLySanPham, Khuyến mãi, Tài khoản, hồ sơ, sổ địa chỉ, lịch sử đơn
+- Chỉ dùng token màu, font và component chung
+- Có trạng thái đang tải, trống và lỗi",5,S6 Hoàn thiện,E9
+GUPPY-216,216,215,Sub-task,Bảng và form quản trị dùng chung,,,,,,S6 Hoàn thiện,E9
+GUPPY-217,217,215,Sub-task,Bố cục trang tài khoản khách hàng,,,,,,S6 Hoàn thiện,E9
+GUPPY-218,218,215,Sub-task,"Trạng thái đang tải, trống và lỗi",,,,,,S6 Hoàn thiện,E9
+GUPPY-219,219,10,Story,Số liệu Tổng quan đầy đủ với Recharts,,E10 Thống kê,"Là admin, tôi muốn mọi thẻ và biểu đồ trên Tổng quan dùng số thật, để không xem nhầm dữ liệu giả. Điểm lệch: L19.
+
+Tiêu chí chấp nhận:
+- API trả doanh thu hôm nay và so với hôm qua, đơn chờ, tồn, hao hụt tháng, doanh thu 7 ngày, đơn theo trạng thái, dòng bán chạy, đơn mới nhất
+- Biểu đồ doanh thu dùng Recharts, giữ màu của ảnh
+- Ngày hiển thị là ngày hiện tại","- API trả doanh thu hôm nay và so với hôm qua, đơn chờ, tồn, hao hụt tháng, doanh thu 7 ngày, đơn theo trạng thái, dòng bán chạy, đơn mới nhất
+- Biểu đồ doanh thu dùng Recharts, giữ màu của ảnh
+- Ngày hiển thị là ngày hiện tại",3,S6 Hoàn thiện,E10
+GUPPY-220,220,219,Sub-task,Bổ sung truy vấn thống kê,,,,,,S6 Hoàn thiện,E10
+GUPPY-221,221,219,Sub-task,Vẽ biểu đồ bằng Recharts,,,,,,S6 Hoàn thiện,E10
+GUPPY-222,222,8,Story,Tìm kiếm và thông báo trong quản trị,,E8 Quản lý đơn,"Là nhân viên, tôi muốn ô tìm kiếm và chuông thông báo hoạt động, để nhanh chóng tìm đơn, lô và biết đơn mới. Điểm lệch: L20.
+
+Tiêu chí chấp nhận:
+- Tìm được theo mã đơn, SĐT, mã lô
+- Số trên menu Đơn hàng và chuông bằng số đơn chờ thật","- Tìm được theo mã đơn, SĐT, mã lô
+- Số trên menu Đơn hàng và chuông bằng số đơn chờ thật",3,S6 Hoàn thiện,E8
+GUPPY-223,223,222,Sub-task,Thêm tham số tuKhoa cho API đơn và lô,,,,,,S6 Hoàn thiện,E8
+GUPPY-224,224,222,Sub-task,"Nối ô tìm kiếm, chuông và số trên menu",,,,,,S6 Hoàn thiện,E8
+GUPPY-225,225,11,Story,Xử lý liên kết chân trang,,E11 Kiểm thử & Triển khai,"Là khách, tôi muốn các liên kết chân trang đều bấm được, để không gặp liên kết chết. Điểm lệch: L23.
+
+Tiêu chí chấp nhận:
+- Liên kết mua sắm mở danh sách đã lọc
+- Tra cứu mở trang TraCuuDon
+- Chính sách, hướng dẫn, câu hỏi thường gặp mở mục nội dung trên trang chủ hoặc được bỏ","- Liên kết mua sắm mở danh sách đã lọc
+- Tra cứu mở trang TraCuuDon
+- Chính sách, hướng dẫn, câu hỏi thường gặp mở mục nội dung trên trang chủ hoặc được bỏ",1,S6 Hoàn thiện,E11
+GUPPY-226,226,225,Sub-task,Nối liên kết chân trang,,,,,,S6 Hoàn thiện,E11
+GUPPY-227,227,225,Sub-task,Viết nội dung chính sách bảo hành và hướng dẫn thả cá,,,,,,S6 Hoàn thiện,E11

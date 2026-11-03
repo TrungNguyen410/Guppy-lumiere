@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: guppy-backend
+  # Không có giá trị mặc định: thiếu biến môi trường thì ứng dụng dừng ngay khi khởi động
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  jpa:
+    open-in-view: false
+    hibernate:
+      # Flyway quản lý cấu trúc bảng, Hibernate chỉ kiểm tra entity có khớp không
+      ddl-auto: validate
+    properties:
+      hibernate:
+        # Nạp theo lô để tránh N+1 khi đọc danh sách sản phẩm
+        default_batch_fetch_size: 50
+        jdbc:
+          time_zone: Asia/Ho_Chi_Minh
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  jackson:
+    time-zone: Asia/Ho_Chi_Minh
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    thoi-han-phut: 1440
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:5173}

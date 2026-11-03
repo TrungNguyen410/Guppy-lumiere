@@ -1,0 +1,359 @@
+GUPPY/
+├── design-reference/
+├── docs/
+│   └── jira/
+│       ├── doi-chieu-de-bai-thiet-ke.md
+│       ├── jira-import.csv
+│       └── jira-plan.md
+├── guppy-backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── guppyshop/
+│   │   │   │           ├── cart/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── catalog/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── common/
+│   │   │   │           │   ├── config/
+│   │   │   │           │   │   ├── CorsConfig.java
+│   │   │   │           │   │   ├── JpaAuditingConfig.java
+│   │   │   │           │   │   ├── OpenApiConfig.java
+│   │   │   │           │   │   └── SecurityConfig.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── AggregateRoot.java
+│   │   │   │           │   │   └── BaseEntity.java
+│   │   │   │           │   ├── exception/
+│   │   │   │           │   │   ├── BusinessException.java
+│   │   │   │           │   │   ├── GlobalExceptionHandler.java
+│   │   │   │           │   │   └── NotFoundException.java
+│   │   │   │           │   └── response/
+│   │   │   │           │       ├── ApiResponse.java
+│   │   │   │           │       └── PageResponse.java
+│   │   │   │           ├── identity/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── inventory/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── ordering/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── event/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── repository/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── state/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── payment/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── promotion/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── report/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           ├── review/
+│   │   │   │           │   ├── application/
+│   │   │   │           │   │   ├── dto/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   ├── mapper/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── usecase/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── domain/
+│   │   │   │           │   │   ├── model/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── repository/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   ├── infrastructure/
+│   │   │   │           │   │   ├── listener/
+│   │   │   │           │   │   │   └── package-info.java
+│   │   │   │           │   │   └── persistence/
+│   │   │   │           │   │       └── package-info.java
+│   │   │   │           │   └── presentation/
+│   │   │   │           │       ├── request/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       ├── response/
+│   │   │   │           │       │   └── package-info.java
+│   │   │   │           │       └── package-info.java
+│   │   │   │           └── GuppyApplication.java
+│   │   │   └── resources/
+│   │   │       ├── db/
+│   │   │       │   └── migration/
+│   │   │       │       ├── V1__init.sql
+│   │   │       │       └── V2__seed.sql
+│   │   │       └── application.yml
+│   │   └── test/
+│   │       └── java/
+│   │           └── com/
+│   │               └── guppyshop/
+│   │                   └── common/
+│   │                       └── response/
+│   │                           └── ApiResponseTest.java
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   └── pom.xml
+├── guppy-frontend/
+│   ├── public/
+│   │   └── favicon.svg
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── providers.tsx
+│   │   │   ├── router.tsx
+│   │   │   ├── store.ts
+│   │   │   └── styles.css
+│   │   ├── entities/
+│   │   │   ├── don-hang/
+│   │   │   │   ├── api.ts
+│   │   │   │   └── model.ts
+│   │   │   ├── lo-ca/
+│   │   │   │   ├── api.ts
+│   │   │   │   └── model.ts
+│   │   │   ├── nguoi-dung/
+│   │   │   │   ├── api.ts
+│   │   │   │   └── model.ts
+│   │   │   └── san-pham/
+│   │   │       ├── ui/
+│   │   │       │   └── CardCa.tsx
+│   │   │       ├── api.ts
+│   │   │       └── model.ts
+│   │   ├── features/
+│   │   │   ├── dang-nhap/
+│   │   │   │   └── index.ts
+│   │   │   ├── dat-hang/
+│   │   │   │   └── index.ts
+│   │   │   ├── duyet-don/
+│   │   │   │   └── index.ts
+│   │   │   ├── loc-san-pham/
+│   │   │   │   └── index.ts
+│   │   │   ├── quan-ly-lo/
+│   │   │   │   └── index.ts
+│   │   │   ├── them-vao-gio/
+│   │   │   │   └── index.ts
+│   │   │   └── tra-cuu-don/
+│   │   │       └── index.ts
+│   │   ├── pages/
+│   │   │   ├── admin/
+│   │   │   │   ├── LayoutQuanTri.tsx
+│   │   │   │   ├── QuanLyDon.tsx
+│   │   │   │   ├── QuanLyLoCa.tsx
+│   │   │   │   ├── QuanLySanPham.tsx
+│   │   │   │   └── TongQuan.tsx
+│   │   │   ├── ChiTietCa.tsx
+│   │   │   ├── DangKy.tsx
+│   │   │   ├── DangNhap.tsx
+│   │   │   ├── DanhSachCa.tsx
+│   │   │   ├── GioHang.tsx
+│   │   │   ├── ThanhToan.tsx
+│   │   │   ├── TraCuuDon.tsx
+│   │   │   └── TrangChu.tsx
+│   │   ├── shared/
+│   │   │   ├── api/
+│   │   │   │   └── axiosClient.ts
+│   │   │   ├── lib/
+│   │   │   │   ├── cn.ts
+│   │   │   │   ├── duongDan.ts
+│   │   │   │   ├── formatNgay.ts
+│   │   │   │   ├── formatTien.ts
+│   │   │   │   └── phien.ts
+│   │   │   ├── types/
+│   │   │   │   └── ApiResponse.ts
+│   │   │   └── ui/
+│   │   │       ├── Button.tsx
+│   │   │       ├── Input.tsx
+│   │   │       ├── Modal.tsx
+│   │   │       ├── Table.tsx
+│   │   │       └── TrangKhung.tsx
+│   │   ├── widgets/
+│   │   │   ├── BangDonHang.tsx
+│   │   │   ├── BeCa3D.tsx
+│   │   │   ├── BoLocCa.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.tsx
+│   │   │   └── ThanhTrangThaiDon.tsx
+│   │   └── main.tsx
+│   ├── .dockerignore
+│   ├── components.json
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── .env
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+└── README.md

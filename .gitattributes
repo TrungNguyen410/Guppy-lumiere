@@ -1,0 +1,8 @@
+# Giữ LF cho mọi file văn bản: script và cấu hình chạy trong container Linux sẽ lỗi nếu bị đổi sang CRLF
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff2 binary

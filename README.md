@@ -86,7 +86,7 @@ Các test nghiệp vụ chính:
 - `TrangThaiStateTest`: toàn bộ các cặp chuyển trạng thái đơn
 - `ChienLuocBanTest`: giá, tồn khả dụng và số cá xuất kho theo từng đơn vị bán
 
-Test giữ và trả tồn cần MySQL thật nên không chạy khi build image. Cần các dịch vụ đang chạy với dữ liệu mới seed, rồi chạy từ thư mục gốc dự án (PowerShell). Tên mạng `guppy_default` lấy theo tên thư mục dự án, đổi lại nếu bạn đặt thư mục tên khác:
+Test giữ và trả tồn cần MySQL thật nên không chạy khi build image. Cần các dịch vụ đang chạy với dữ liệu mới seed, rồi chạy từ thư mục gốc dự án (PowerShell). Tên mạng `guppy_default` lấy theo tên thư mục dự án, đổi lại nếu bạn đặt thư mục tên khác. Ví dụ clone repo về thư mục `Guppy-lumiere` thì tên mạng là `guppy-lumiere_default`; xem tên đúng bằng `docker network ls`:
 
 ```powershell
 docker run --rm --network guppy_default --env-file .env -v "${PWD}\backend:/app" -w /app maven:3.9-eclipse-temurin-21 mvn -B test "-Dgroups=tich-hop" "-DexcludedGroups=khong-co"

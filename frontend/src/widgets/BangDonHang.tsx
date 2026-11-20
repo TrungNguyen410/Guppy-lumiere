@@ -1,14 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight, Landmark, MapPin, Phone, ShieldCheck, UserRound, X } from 'lucide-react'
-import { useState } from 'react'
-import { HUY_DUOC_O, LUONG_TRANG_THAI, THONG_TIN_THANH_TOAN, THONG_TIN_TRANG_THAI, type DonHang, type TrangThaiDon, type YeuCauBaoHanh } from '@/entities/don-hang/model'
+import { useEffect, useState } from 'react'
+import { HUY_DUOC_O, LUONG_TRANG_THAI, THONG_TIN_THANH_TOAN, THONG_TIN_TRANG_THAI, TEN_HINH_THUC_BAO_HANH, type DonHang, type HinhThucBaoHanh, type TrangThaiDon, type XuLyBaoHanh, type YeuCauBaoHanh } from '@/entities/don-hang/model'
 import { tenNganLuaChon } from '@/entities/san-pham/model'
 import { useDuyetDon } from '@/features/duyet-don/useDuyetDon'
 import { formatNgayGio } from '@/shared/lib/formatNgay'
 import { formatTien } from '@/shared/lib/formatTien'
 import { Badge } from '@/shared/ui/Badge'
 import { Button } from '@/shared/ui/Button'
-import { Textarea, Truong } from '@/shared/ui/Input'
+import { Input, Select, Textarea, Truong } from '@/shared/ui/Input'
 import { Modal } from '@/shared/ui/Modal'
 import { BaoLoi, DangTai, LoiThaoTac } from '@/shared/ui/TrangThaiDuLieu'
 
@@ -19,8 +19,16 @@ function buocTiep(trangThai: TrangThaiDon): TrangThaiDon | undefined {
   return i >= 0 ? LUONG_TRANG_THAI[i + 1] : undefined
 }
 
-function ModalXuLyBaoHanh({ yeuCau, khiDong, khiLuu, dangLuu, loi }: { yeuCau: YeuCauBaoHanh | null; khiDong: () => void; khiLuu: (ketQua: string) => void; dangLuu: boolean; loi: unknown }) {
+function ModalXuLyBaoHanh({ yeuCau, khiDong, khiLuu, dangLuu, loi }: { yeuCau: YeuCauBaoHanh | null; khiDong: () => void; khiLuu: (ketQua: XuLyBaoHanh) => void; dangLuu: boolean; loi: unknown }) {
   const [ketQua, setKetQua] = useState('')
+  const [hinhThuc, setHinhThuc] = useState<HinhThucBaoHanh>('DOI_CA')
+  const [soTien, setSoTien] = useState(0)
+  // Mở yêu cầu khác thì làm mới form; lưu lỗi thì giữ nguyên để nhân viên sửa
+  useEffect(() => {
+    setKetQua('')
+    setHinhThuc('DOI_CA')
+    setSoTien(0)
+  }, [yeuCau?.id])
   return (
     <Modal mo={yeuCau !== null} khiDoi={(mo) => !mo && khiDong()} tieuDe={`Bảo hành · ${yeuCau?.maDon ?? ''}`}>
       <div className="space-y-4">
@@ -30,16 +38,29 @@ function ModalXuLyBaoHanh({ yeuCau, khiDong, khiLuu, dangLuu, loi }: { yeuCau: Y
             Xem video mở hàng
           </a>
         )}
-        <Truong nhan="Kết quả xử lý *">
-          <Textarea maxLength={500} value={ketQua} onChange={(su) => setKetQua(su.target.value)} placeholder="Đã đổi 2 cá mới" />
+        <p className="text-sm text-slate-400">Khách báo {yeuCau?.soCaChet} cá chết · tiền hàng tối đa được hoàn {formatTien(yeuCau?.tienHoanToiDa ?? 0)} (không gồm phí giao)</p>
+        <Truong nhan="Hình thức xử lý *">
+          <Select value={hinhThuc} onChange={(su) => setHinhThuc(su.target.value as HinhThucBaoHanh)}>
+            {(Object.keys(TEN_HINH_THUC_BAO_HANH) as HinhThucBaoHanh[]).map((h) => (
+              <option key={h} value={h}>{TEN_HINH_THUC_BAO_HANH[h]}</option>
+            ))}
+          </Select>
+        </Truong>
+        {hinhThuc === 'DOI_CA' && <p className="text-xs text-slate-400">Hệ thống xuất {yeuCau?.soCaChet} cá từ chính các lô đã bán cho đơn này.</p>}
+        {hinhThuc === 'HOAN_TIEN' && (
+          <Truong nhan="Số tiền hoàn *">
+            <Input type="number" min={1} max={yeuCau?.tienHoanToiDa} value={soTien || ''} onChange={(su) => setSoTien(Number(su.target.value))} />
+          </Truong>
+        )}
+        <Truong nhan={hinhThuc === 'TU_CHOI' ? 'Lý do từ chối *' : 'Ghi chú'}>
+          <Textarea maxLength={200} value={ketQua} onChange={(su) => setKetQua(su.target.value)} placeholder="Video không quay liền mạch" />
         </Truong>
         <LoiThaoTac loi={loi} />
         <Button
           className="w-full"
-          disabled={!ketQua.trim() || dangLuu}
+          disabled={dangLuu || (hinhThuc === 'TU_CHOI' && !ketQua.trim()) || (hinhThuc === 'HOAN_TIEN' && soTien <= 0)}
           onClick={() => {
-            khiLuu(ketQua.trim())
-            setKetQua('')
+            khiLuu({ hinhThuc, soTienHoan: hinhThuc === 'HOAN_TIEN' ? soTien : undefined, ghiChu: ketQua.trim() || undefined })
           }}
         >
           Hoàn tất bảo hành

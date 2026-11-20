@@ -88,6 +88,14 @@ class GioHangTest {
     }
 
     @Test
+    void mocMienPhiGiaoXetSauGiamGia() {
+        assertThat(PhiGiaoHang.tinh(new BigDecimal("600000"), new BigDecimal("100000"))).isEqualByComparingTo("0");
+        assertThat(PhiGiaoHang.tinh(new BigDecimal("600000"), new BigDecimal("100001"))).isEqualByComparingTo("50000");
+        // Mã giảm 100%: tiền hàng còn 0 nhưng giỏ không trống nên vẫn tính phí
+        assertThat(PhiGiaoHang.tinh(new BigDecimal("600000"), new BigDecimal("600000"))).isEqualByComparingTo("50000");
+    }
+
+    @Test
     void converterDoiPhuKienQuaLaiGiaTriKhongNull() {
         DonViBanConverter converter = new DonViBanConverter();
 

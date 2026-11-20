@@ -17,8 +17,9 @@ export function FormBaoHanh({ maDon, khiDong, khiXong }: Props) {
   const queryClient = useQueryClient()
   const [moTa, setMoTa] = useState('')
   const [video, setVideo] = useState('')
+  const [soCaChet, setSoCaChet] = useState(1)
   const gui = useMutation({
-    mutationFn: () => guiBaoHanh({ maDon: maDon!, moTa: moTa.trim(), duongDanVideo: video.trim() || undefined }),
+    mutationFn: () => guiBaoHanh({ maDon: maDon!, moTa: moTa.trim(), duongDanVideo: video.trim(), soCaChet }),
     onSuccess: async () => {
       setMoTa('')
       setVideo('')
@@ -40,11 +41,14 @@ export function FormBaoHanh({ maDon, khiDong, khiXong }: Props) {
         <Truong nhan="Tình trạng cá *">
           <Textarea required maxLength={1000} value={moTa} onChange={(su) => setMoTa(su.target.value)} placeholder="Mô tả số cá chết và tình trạng khi mở túi" />
         </Truong>
-        <Truong nhan="Đường dẫn video mở hàng" goiY="không bắt buộc">
-          <Input type="url" value={video} onChange={(su) => setVideo(su.target.value)} placeholder="https://…" />
+        <Truong nhan="Số cá chết *">
+          <Input required type="number" min={1} max={999} value={soCaChet} onChange={(su) => setSoCaChet(Number(su.target.value))} />
+        </Truong>
+        <Truong nhan="Đường dẫn video mở hàng *" goiY="quay liền mạch từ lúc nhận hộp tới khi mở túi">
+          <Input required type="url" maxLength={500} value={video} onChange={(su) => setVideo(su.target.value)} placeholder="https://…" />
         </Truong>
         <LoiThaoTac loi={gui.error} />
-        <Button type="submit" className="w-full" disabled={gui.isPending || !moTa.trim()}>
+        <Button type="submit" className="w-full" disabled={gui.isPending || !moTa.trim() || !video.trim()}>
           {gui.isPending ? 'Đang gửi…' : 'Gửi yêu cầu bảo hành'}
         </Button>
       </form>

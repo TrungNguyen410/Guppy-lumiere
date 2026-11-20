@@ -103,7 +103,7 @@ class DatHangUseCaseTest {
             return don;
         });
         when(thanhToanUseCase.khoiTao(any(), any(), any(), any(), any())).thenReturn(
-                new ThanhToanDto(PhuongThucThanhToan.COD, null, null, null, null, null, null, null));
+                new ThanhToanDto(PhuongThucThanhToan.COD, null, null, null, null, null, null, null, null));
     }
 
     private DatHangCommand lenhKhachVangLai(String maGiamGia) {
@@ -187,7 +187,7 @@ class DatHangUseCaseTest {
     @Test
     void khoiTaoThanhToanTheoTongTienSauGiam() {
         when(maGiamGiaUseCase.apDung("GUPPY10", new BigDecimal("200000")))
-                .thenReturn(new KetQuaApMaDto(3L, "GUPPY10", 10, new BigDecimal("20000")));
+                .thenReturn(new KetQuaApMaDto(3L, "GUPPY10", 10, new BigDecimal("20000"), new BigDecimal("50000")));
 
         var ketQua = useCase.datHang(lenhKhachVangLai("GUPPY10"));
 
@@ -341,7 +341,7 @@ class DatHangUseCaseTest {
     @Test
     void chuyenKhoanTraVeThongTinNganHangChoKhach() {
         when(thanhToanUseCase.khoiTao(any(), any(), any(), any(), any())).thenReturn(new ThanhToanDto(
-                PhuongThucThanhToan.CHUYEN_KHOAN, null, new BigDecimal("250000"), null, "GP12345678", "VCB", "0123", "GUPPY"));
+                PhuongThucThanhToan.CHUYEN_KHOAN, null, new BigDecimal("250000"), null, null, "GP12345678", "VCB", "0123", "GUPPY"));
 
         var ketQua = useCase.datHang(new DatHangCommand(new ChuGioHang(null, SESSION), "A", "0901234567", "1 Lê Lợi", "Hà Nội",
                 null, PhuongThucThanhToan.CHUYEN_KHOAN, null));

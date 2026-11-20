@@ -97,8 +97,12 @@ public class DonHang extends AggregateRoot {
         this.maGiamGiaId = maGiamGiaId;
         cacDong.forEach(dong -> chiTiet.add(new ChiTietDonHang(this, dong)));
         this.tamTinh = chiTiet.stream().map(ChiTietDonHang::thanhTien).reduce(BigDecimal.ZERO, BigDecimal::add);
-        this.phiGiao = PhiGiaoHang.tinh(tamTinh);
         this.giamGia = giamGia == null ? BigDecimal.ZERO : giamGia;
+        if (this.giamGia.signum() < 0 || this.giamGia.compareTo(tamTinh) > 0) {
+            throw new BusinessException("Tiền giảm không hợp lệ");
+        }
+        // Mốc miễn phí giao xét trên số tiền hàng khách thực trả, sau khi trừ mã giảm giá
+        this.phiGiao = PhiGiaoHang.tinh(tamTinh, this.giamGia);
         this.tongTien = tamTinh.subtract(this.giamGia).add(phiGiao);
         this.trangThai = TrangThaiDon.CHO_XAC_NHAN;
         lichSu.add(new LichSuTrangThai(this, trangThai, LocalDateTime.now(), null));
@@ -160,6 +164,11 @@ public class DonHang extends AggregateRoot {
             throw new BusinessException("Đơn chỉ được bảo hành trong 24 giờ sau khi hoàn tất");
         }
         chuyenTrangThai(TrangThaiDon.BAO_HANH, "Khách yêu cầu bảo hành");
+    }
+
+    /** Tiền hàng khách đã trả, không gồm phí giao: mức tối đa được hoàn khi bảo hành. */
+    public BigDecimal tienHang() {
+        return tamTinh.subtract(giamGia);
     }
 
     public boolean coSanPham(Long sanPhamId) {

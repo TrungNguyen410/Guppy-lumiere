@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import type { XuLyBaoHanh } from '@/entities/don-hang/model'
 import { chuyenTrangThaiDon, layBaoHanhChoXuLy, layDonChoNhanVien, xacNhanDaNhanTien, xuLyBaoHanh } from '@/entities/don-hang/api'
 import type { TrangThaiDon } from '@/entities/don-hang/model'
 
@@ -18,7 +19,7 @@ export function useDuyetDon(tuKhoa: string) {
   })
   const nhanTien = useMutation({ mutationFn: (id: number) => xacNhanDaNhanTien(id), onSuccess: lamMoi })
   const xuLy = useMutation({
-    mutationFn: ({ id, ketQua }: { id: number; ketQua: string }) => xuLyBaoHanh(id, ketQua),
+    mutationFn: ({ id, ketQua }: { id: number; ketQua: XuLyBaoHanh }) => xuLyBaoHanh(id, ketQua),
     onSuccess: lamMoi,
   })
 

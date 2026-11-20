@@ -46,6 +46,21 @@ class SanPhamTest {
     }
 
     @Test
+    void giaCapVaBoBaKhongDuocCaoHonMuaLe() {
+        assertThatThrownBy(() -> taoCa(List.of(conLe(GioiTinh.DUC, 45000), conLe(GioiTinh.CAI, 35000), cap(80001))))
+                .isInstanceOf(BusinessException.class).hasMessageContaining("cặp");
+        assertThatThrownBy(() -> taoCa(List.of(conLe(GioiTinh.DUC, 45000), conLe(GioiTinh.CAI, 35000),
+                new MucGia(DonViBan.BO_BA, null, BigDecimal.valueOf(115001)))))
+                .isInstanceOf(BusinessException.class).hasMessageContaining("bộ ba");
+
+        CaGuppy bangGia = taoCa(List.of(conLe(GioiTinh.DUC, 45000), conLe(GioiTinh.CAI, 35000), cap(80000),
+                new MucGia(DonViBan.BO_BA, null, BigDecimal.valueOf(115000))));
+        assertThat(bangGia.getBangGia()).hasSize(4);
+        // Thiếu giá cái lẻ thì không có mốc để so
+        assertThat(taoCa(List.of(conLe(GioiTinh.DUC, 45000), cap(200000))).getBangGia()).hasSize(2);
+    }
+
+    @Test
     void tinhGiaTheoDonViVaGioiTinhDaChon() {
         CaGuppy ca = taoCa(List.of(conLe(GioiTinh.DUC, 45000), conLe(GioiTinh.CAI, 35000), cap(75000)));
 

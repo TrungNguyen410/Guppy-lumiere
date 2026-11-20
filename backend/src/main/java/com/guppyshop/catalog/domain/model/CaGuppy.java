@@ -174,12 +174,38 @@ public class CaGuppy extends SanPham {
                 throw new BusinessException("Bảng giá bị trùng đơn vị bán");
             }
         }
+        kiemTraGiaCombo(mucGia);
         bangGia.removeIf(cu -> mucGia.stream().noneMatch(m -> cu.cungLoai(m.donVi(), m.gioiTinh())));
         for (MucGia muc : mucGia) {
             bangGia.stream().filter(g -> g.cungLoai(muc.donVi(), muc.gioiTinh())).findFirst()
                     .ifPresentOrElse(g -> g.doiGia(muc.gia()), () -> bangGia.add(new GiaBanCa(this, muc)));
         }
         datGiaThapNhat(tinhGia(1));
+    }
+
+    /**
+     * Cặp (1 đực + 1 cái) và bộ ba (1 đực + 2 cái) là gói mua chung, không được đắt hơn mua lẻ từng con;
+     * chỉ kiểm tra khi bảng giá có đủ giá con lẻ đực và cái.
+     */
+    private static void kiemTraGiaCombo(List<MucGia> mucGia) {
+        BigDecimal duc = giaCua(mucGia, DonViBan.CON_LE, GioiTinh.DUC);
+        BigDecimal cai = giaCua(mucGia, DonViBan.CON_LE, GioiTinh.CAI);
+        if (duc == null || cai == null) {
+            return;
+        }
+        BigDecimal cap = giaCua(mucGia, DonViBan.CAP, GioiTinh.KHONG_AP_DUNG);
+        if (cap != null && cap.compareTo(duc.add(cai)) > 0) {
+            throw new BusinessException("Giá cặp không được cao hơn giá 1 đực + 1 cái mua lẻ");
+        }
+        BigDecimal boBa = giaCua(mucGia, DonViBan.BO_BA, GioiTinh.KHONG_AP_DUNG);
+        if (boBa != null && boBa.compareTo(duc.add(cai).add(cai)) > 0) {
+            throw new BusinessException("Giá bộ ba không được cao hơn giá 1 đực + 2 cái mua lẻ");
+        }
+    }
+
+    private static BigDecimal giaCua(List<MucGia> mucGia, DonViBan donVi, GioiTinh gioiTinh) {
+        return mucGia.stream().filter(m -> m.donVi() == donVi && m.gioiTinh() == gioiTinh)
+                .map(MucGia::gia).findFirst().orElse(null);
     }
 
     private GiaBanCa layGia(DonViBan donVi, GioiTinh gioiTinh) {

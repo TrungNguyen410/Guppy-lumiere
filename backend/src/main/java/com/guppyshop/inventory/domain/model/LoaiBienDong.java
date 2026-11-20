@@ -5,5 +5,7 @@ public enum LoaiBienDong {
     PHAN_GIOI,
     HAO_HUT,
     BAN,
-    TRA_TON
+    TRA_TON,
+    /** Xuất cá gửi bù cho khách khi bảo hành đổi cá. */
+    BAO_HANH
 }

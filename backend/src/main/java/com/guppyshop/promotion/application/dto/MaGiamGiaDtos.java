@@ -20,6 +20,7 @@ public final class MaGiamGiaDtos {
     }
 
     @Schema(description = "Kết quả áp mã")
-    public record KetQuaApMaDto(@Schema(hidden = true) Long id, String ma, int phanTram, BigDecimal tienGiam) {
+    public record KetQuaApMaDto(@Schema(hidden = true) Long id, String ma, int phanTram, BigDecimal tienGiam,
+                                @Schema(description = "Phí giao sau khi áp mã; mốc miễn phí xét trên tiền hàng sau giảm") BigDecimal phiGiao) {
     }
 }

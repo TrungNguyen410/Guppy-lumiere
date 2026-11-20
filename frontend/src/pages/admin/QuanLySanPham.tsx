@@ -3,7 +3,7 @@ import { Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { useDongCa } from '@/entities/san-pham/api'
 import { layChiTietQuanTri, moBanSanPham, ngungBanSanPham, laySanPhamQuanTri, suaDongCa, suaSanPham, taoDongCa, taoSanPham, xoaDongCa, type LuuDongCa, type LuuSanPham } from '@/entities/quan-tri/api'
-import { TEN_DUOI, TEN_NHAN, TEN_PHU_KIEN, type DongCa, type DonViBan, type GioiTinh, type HoaTiet, type KieuDuoi, type LoaiPhuKien, type NhanSanPham, type SanPhamChiTiet, type SanPhamTomTat } from '@/entities/san-pham/model'
+import { TEN_DUOI, TEN_HOA_TIET, TEN_NHAN, TEN_PHU_KIEN, type DongCa, type DonViBan, type GioiTinh, type HoaTiet, type KieuDuoi, type LoaiPhuKien, type NhanSanPham, type SanPhamChiTiet, type SanPhamTomTat } from '@/entities/san-pham/model'
 import { formatTien } from '@/shared/lib/formatTien'
 import { Badge } from '@/shared/ui/Badge'
 import { Button } from '@/shared/ui/Button'
@@ -260,10 +260,11 @@ function FormDongCa({ ban, khiDong }: { ban: DongCa | null; khiDong: () => void 
         </Truong>
         <Truong nhan="Họa tiết *">
           <Select value={d.hoaTiet} onChange={(su) => setD({ ...d, hoaTiet: su.target.value as HoaTiet })}>
-            <option value="SOLID">Đồng màu</option>
-            <option value="MOSAIC">Mosaic</option>
-            <option value="GRASS">Grass</option>
-            <option value="KOI">Koi</option>
+            {(Object.keys(TEN_HOA_TIET) as HoaTiet[]).map((h) => (
+              <option key={h} value={h}>
+                {TEN_HOA_TIET[h]}
+              </option>
+            ))}
           </Select>
         </Truong>
       </div>

@@ -14,6 +14,7 @@ import com.guppyshop.catalog.domain.model.CatalogEnums.NhanSanPham;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -51,8 +52,10 @@ public sealed interface LuuSanPhamRequest {
             @NotBlank(message = "Màu sắc không được trống") @Size(max = 80) String mauSac,
             boolean thuanChung,
             @NotBlank(message = "Kích thước không được trống") @Size(max = 20) String kichThuoc,
-            @Min(value = 0, message = "Tuổi không được âm") int tuoiTuan,
-            @Schema(description = "Số con trong một lô cá bột", example = "10") @Min(value = 1, message = "Số con mỗi lô phải lớn hơn 0") int soConMoiLo,
+            // Guppy sống khoảng 2 năm nên tuổi bán không vượt 104 tuần
+            @Min(value = 0, message = "Tuổi không được âm") @Max(value = 104, message = "Tuổi tối đa 104 tuần") int tuoiTuan,
+            @Schema(description = "Số con trong một lô cá bột", example = "10") @Min(value = 1, message = "Số con mỗi lô phải lớn hơn 0")
+            @Max(value = 500, message = "Số con mỗi lô tối đa 500") int soConMoiLo,
             @NotNull(message = "Chưa nhập nhiệt độ thấp nhất") BigDecimal nhietDoMin,
             @NotNull(message = "Chưa nhập nhiệt độ cao nhất") BigDecimal nhietDoMax,
             @NotNull(message = "Chưa nhập pH thấp nhất") BigDecimal phMin,

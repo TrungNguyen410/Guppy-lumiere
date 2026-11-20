@@ -1,3 +1,4 @@
+import { LOI_SDT, REGEX_SDT } from '@/shared/lib/soDienThoai'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
@@ -17,7 +18,7 @@ import { LoiThaoTac } from '@/shared/ui/TrangThaiDuLieu'
 
 const luocDo = z.object({
   hoTen: z.string().trim().min(1, 'Vui lòng nhập họ tên').max(120),
-  soDienThoai: z.string().regex(/^0\d{9}$/, 'Số điện thoại gồm 10 số, bắt đầu bằng 0'),
+  soDienThoai: z.string().regex(REGEX_SDT, LOI_SDT),
   diaChi: z.string().trim().min(1, 'Vui lòng nhập địa chỉ').max(255),
   thanhPho: z.enum(THANH_PHO_GIAO),
   ghiChu: z.string().max(500).optional(),

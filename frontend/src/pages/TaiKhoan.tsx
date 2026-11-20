@@ -1,8 +1,10 @@
+import { LOI_SDT, MAU_SDT } from '@/shared/lib/soDienThoai'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { LogOut, MapPin, MessageSquareText, Package, Pencil, ShieldCheck, Star, Trash2, UserRound, Video } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { layBaoHanhCuaToi, layLichSuDon } from '@/entities/don-hang/api'
+import { TEN_HINH_THUC_BAO_HANH } from '@/entities/don-hang/model'
 import { NhanTrangThai } from '@/entities/don-hang/ui/NhanTrangThai'
 import { capNhatHoSo, layHoSo, laySoDiaChi, suaDiaChi, themDiaChi, xoaDiaChi } from '@/entities/nguoi-dung/api'
 import { laNhanSu, THANH_PHO_GIAO, type DiaChi, type LuuDiaChi } from '@/entities/nguoi-dung/model'
@@ -21,7 +23,6 @@ import { Modal } from '@/shared/ui/Modal'
 import { DauTrang } from '@/shared/ui/TieuDe'
 import { BaoLoi, DangTai, LoiThaoTac, Trong } from '@/shared/ui/TrangThaiDuLieu'
 
-const MAU_SDT = '0[0-9]{9}'
 
 function TabHoSo() {
   const queryClient = useQueryClient()
@@ -54,7 +55,7 @@ function TabHoSo() {
         <Input required maxLength={120} value={giaTri.hoTen} onChange={(su) => setNhap({ ...giaTri, hoTen: su.target.value })} />
       </Truong>
       <Truong nhan="Số điện thoại *">
-        <Input required pattern={MAU_SDT} title="Gồm 10 số, bắt đầu bằng 0" value={giaTri.soDienThoai} onChange={(su) => setNhap({ ...giaTri, soDienThoai: su.target.value })} />
+        <Input required pattern={MAU_SDT} title={LOI_SDT} value={giaTri.soDienThoai} onChange={(su) => setNhap({ ...giaTri, soDienThoai: su.target.value })} />
       </Truong>
       <LoiThaoTac loi={luu.error} />
       {luu.isSuccess && !nhap && <p className="text-sm text-kelp">Đã lưu hồ sơ.</p>}
@@ -88,7 +89,7 @@ function ModalDiaChi({ dangSua, mo, khiDong }: { dangSua: DiaChi | null; mo: boo
           <Input required maxLength={120} value={d.hoTenNhan} onChange={(su) => setD({ ...d, hoTenNhan: su.target.value })} />
         </Truong>
         <Truong nhan="Số điện thoại *">
-          <Input required pattern={MAU_SDT} title="Gồm 10 số, bắt đầu bằng 0" value={d.soDienThoai} onChange={(su) => setD({ ...d, soDienThoai: su.target.value })} />
+          <Input required pattern={MAU_SDT} title={LOI_SDT} value={d.soDienThoai} onChange={(su) => setD({ ...d, soDienThoai: su.target.value })} />
         </Truong>
         <Truong nhan="Địa chỉ *">
           <Input required maxLength={255} value={d.diaChi} onChange={(su) => setD({ ...d, diaChi: su.target.value })} />
@@ -242,6 +243,13 @@ function TabBaoHanh() {
             {y.xuLyLuc ? <Badge mau="kelp">Đã xử lý</Badge> : <Badge mau="sun">Đang chờ</Badge>}
           </div>
           <p className="mt-2 text-slate-300">{y.moTa}</p>
+          <p className="mt-1 text-xs text-slate-500">Báo {y.soCaChet} cá chết</p>
+          {y.hinhThuc && (
+            <p className="mt-2 font-semibold text-white">
+              {TEN_HINH_THUC_BAO_HANH[y.hinhThuc]}
+              {y.hinhThuc === 'HOAN_TIEN' && y.soTienHoan ? ` · ${formatTien(y.soTienHoan)}` : y.hinhThuc === 'DOI_CA' ? ` · ${y.soCaChet} con` : ''}
+            </p>
+          )}
           {y.ketQua && (
             <p className="mt-2 flex gap-2 text-kelp">
               <MessageSquareText className="h-4 w-4 shrink-0" />

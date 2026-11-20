@@ -1,7 +1,7 @@
 import type { MauNhan } from '@/shared/ui/Badge'
 
 export type GiaiDoanLo = 'CA_BOT' | 'DANG_PHAN_GIOI' | 'TRUONG_THANH'
-export type LoaiBienDong = 'NHAP_DE' | 'PHAN_GIOI' | 'HAO_HUT' | 'BAN' | 'TRA_TON'
+export type LoaiBienDong = 'NHAP_DE' | 'PHAN_GIOI' | 'HAO_HUT' | 'BAN' | 'TRA_TON' | 'BAO_HANH'
 
 /** Khớp LoCaDto của backend. */
 export interface LoCa {
@@ -56,6 +56,7 @@ export const THONG_TIN_BIEN_DONG: Record<LoaiBienDong, { nhan: string; mau: MauN
   HAO_HUT: { nhan: 'Hao hụt', mau: 'coral' },
   BAN: { nhan: 'Bán', mau: 'aqua' },
   TRA_TON: { nhan: 'Trả tồn', mau: 'sun' },
+  BAO_HANH: { nhan: 'Đổi cá bảo hành', mau: 'orchid' },
 }
 
 /** Ví dụ: "-3 đực, -6 cái". */

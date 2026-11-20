@@ -143,6 +143,19 @@ public class LoCa extends BaseEntity {
         return lay;
     }
 
+    /** Xuất cá gửi bù khi bảo hành đổi cá; không đủ cá trong lô thì báo lỗi. */
+    public BienDongKho xuatBaoHanh(TonKho can, Long donHangId, String ghiChu) {
+        kiemTraKhongAm(can.duc(), can.cai(), can.bot());
+        if (can.duc() > soDuc || can.cai() > soCai || can.bot() > soCaBot) {
+            throw new BusinessException("Lô " + maLo + " không đủ cá để đổi");
+        }
+        soDuc -= can.duc();
+        soCai -= can.cai();
+        soCaBot -= can.bot();
+        tinhLaiGiaiDoan();
+        return new BienDongKho(getId(), donHangId, LoaiBienDong.BAO_HANH, -can.duc(), -can.cai(), -can.bot(), ghiChu);
+    }
+
     /** Trả lại đúng số cá theo một dòng BAN khi đơn bị hủy. */
     public BienDongKho traLai(BienDongKho dongBan, String ghiChu) {
         soDuc -= dongBan.getDeltaDuc();

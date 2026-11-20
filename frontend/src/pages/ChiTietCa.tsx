@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useThemVaoGio } from '@/entities/gio-hang/api'
 import { useChiTietSanPham, useDanhGia, useDanhSachSanPham } from '@/entities/san-pham/api'
-import { TEN_DUOI, TEN_NHAN, TEN_PHU_KIEN, tenLuaChon, type GiaBan, type SanPhamChiTiet } from '@/entities/san-pham/model'
+import { TEN_DUOI, TEN_HOA_TIET, TEN_NHAN, TEN_PHU_KIEN, tenLuaChon, type GiaBan, type SanPhamChiTiet } from '@/entities/san-pham/model'
 import { AnhSanPham, nenSanPham } from '@/entities/san-pham/ui/AnhSanPham'
 import { CardCa } from '@/entities/san-pham/ui/CardCa'
 import { cn } from '@/shared/lib/cn'
@@ -232,6 +232,7 @@ export function ChiTietCa() {
           <div className="flex flex-wrap gap-2">
             {sanPham.dongCa && <Badge mau="xam">{sanPham.dongCa.ten}</Badge>}
             {sanPham.kieuDuoi && <Badge mau="xam">{TEN_DUOI[sanPham.kieuDuoi]}</Badge>}
+            {sanPham.dongCa && <Badge mau="xam">{TEN_HOA_TIET[sanPham.dongCa.hoaTiet]}</Badge>}
             {sanPham.loaiPhuKien && <Badge mau="xam">{TEN_PHU_KIEN[sanPham.loaiPhuKien]}</Badge>}
             {chiTiet.data.thuanChung && <Badge mau="xam">Thuần chủng</Badge>}
             {sanPham.nhan.map((n) => (

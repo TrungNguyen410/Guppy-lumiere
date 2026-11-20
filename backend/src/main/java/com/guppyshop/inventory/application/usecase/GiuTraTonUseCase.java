@@ -70,6 +70,46 @@ public class GiuTraTonUseCase {
         bienDongRepository.luuTatCa(nhatKy);
     }
 
+    /**
+     * Bảo hành đổi cá: xuất soCa con từ chính các lô đã bán cho đơn, cùng giới tính đã bán
+     * (đực trước, rồi cái, rồi cá bột), để khách nhận đúng dòng cá đã mua.
+     * Không đổi quá số cá đã bán; lô không còn đủ cá thì báo lỗi để nhân viên chọn hoàn tiền.
+     */
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void xuatDoiCaBaoHanh(Long donHangId, String maDon, int soCa) {
+        List<BienDongKho> dongBan = bienDongRepository.timTheoDon(donHangId, LoaiBienDong.BAN);
+        int daBan = dongBan.stream().mapToInt(b -> -(b.getDeltaDuc() + b.getDeltaCai() + b.getDeltaBot())).sum();
+        if (daBan == 0) {
+            throw new BusinessException("Đơn không có cá sống để đổi");
+        }
+        if (soCa > daBan) {
+            throw new BusinessException("Số cá đổi (" + soCa + ") vượt số cá đã bán trong đơn (" + daBan + ")");
+        }
+        Map<Long, LoCa> cacLo = loCaRepository.khoaTheoCacId(dongBan.stream().map(BienDongKho::getLoCaId).distinct().sorted().toList())
+                .stream().collect(Collectors.toMap(LoCa::getId, Function.identity()));
+        List<BienDongKho> nhatKy = new ArrayList<>();
+        int conLai = soCa;
+        for (BienDongKho ban : dongBan) {
+            if (conLai == 0) {
+                break;
+            }
+            LoCa lo = cacLo.get(ban.getLoCaId());
+            int duc = Math.min(conLai, Math.min(-ban.getDeltaDuc(), lo.getSoDuc()));
+            conLai -= duc;
+            int cai = Math.min(conLai, Math.min(-ban.getDeltaCai(), lo.getSoCai()));
+            conLai -= cai;
+            int bot = Math.min(conLai, Math.min(-ban.getDeltaBot(), lo.getSoCaBot()));
+            conLai -= bot;
+            if (duc + cai + bot > 0) {
+                nhatKy.add(lo.xuatBaoHanh(new TonKho(duc, cai, bot), donHangId, "Đổi cá bảo hành đơn " + maDon));
+            }
+        }
+        if (conLai > 0) {
+            throw new BusinessException("Lô đã bán không còn đủ cá để đổi, vui lòng chọn hoàn tiền");
+        }
+        bienDongRepository.luuTatCa(nhatKy);
+    }
+
     /** Gọi lại lần hai không trả thêm cá: mọi dòng BAN của đơn chỉ được trả một lần. */
     @Transactional(propagation = Propagation.MANDATORY)
     public void traTon(Long donHangId, String maDon, List<DongCanXuat> cacDong) {

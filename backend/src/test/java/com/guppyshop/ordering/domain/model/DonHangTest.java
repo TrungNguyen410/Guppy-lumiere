@@ -54,11 +54,18 @@ class DonHangTest {
     }
 
     @Test
-    void phiGiaoTinhTrenTamTinhTruocGiamGia() {
+    void phiGiaoTinhTrenTienHangSauGiamGia() {
+        // 500.000đ giảm 100.000đ còn 400.000đ, dưới mốc nên vẫn tính phí giao
         DonHang don = don(null, new BigDecimal("100000"), dong(500000, 1));
 
-        assertThat(don.getPhiGiao()).isEqualByComparingTo("0");
-        assertThat(don.getTongTien()).isEqualByComparingTo("400000");
+        assertThat(don.getPhiGiao()).isEqualByComparingTo("50000");
+        assertThat(don.getTongTien()).isEqualByComparingTo("450000");
+        assertThat(don.tienHang()).isEqualByComparingTo("400000");
+    }
+
+    @Test
+    void tienGiamVuotTamTinhBiTuChoi() {
+        assertThatThrownBy(() -> don(null, new BigDecimal("1001"), dong(1000, 1))).isInstanceOf(BusinessException.class);
     }
 
     @Test

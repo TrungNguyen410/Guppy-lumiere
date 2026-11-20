@@ -1,3 +1,4 @@
+import { LOI_SDT, REGEX_SDT } from '@/shared/lib/soDienThoai'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -24,7 +25,7 @@ const luocDoDangNhap = z.object({
 const luocDoDangKy = z
   .object({
     hoTen: z.string().trim().min(1, 'Vui lòng nhập họ tên').max(120),
-    soDienThoai: z.string().regex(/^0\d{9}$/, 'Số điện thoại gồm 10 số, bắt đầu bằng 0'),
+    soDienThoai: z.string().regex(REGEX_SDT, LOI_SDT),
     email: z.email('Email không hợp lệ'),
     matKhau: z.string().min(8, 'Mật khẩu từ 8 ký tự').max(72).regex(/^[\x20-\x7E]*$/, 'Mật khẩu không dùng ký tự có dấu'),
     nhapLai: z.string(),

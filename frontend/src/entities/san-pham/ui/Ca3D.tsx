@@ -11,6 +11,10 @@ const BIEN_DANG_DUOI: Record<KieuDuoi, (u: number) => number> = {
   THUONG: (u) => 0.1 + Math.sin(u * Math.PI) * 0.55,
   DAN: (u) => 0.1 + u * 0.35 + Math.pow(u, 5) * 0.9,
   KIEM_DOI: (u) => 0.1 + u * 0.25 + Math.pow(u, 8) * 0.6,
+  // Đuôi kim: thân đuôi tròn ngắn, tia giữa kéo dài thành mũi nhọn
+  KIM: (u) => (u < 0.6 ? 0.1 + Math.sin((u / 0.6) * Math.PI * 0.85) * 0.42 : 0.04 + (1 - u) * 0.5),
+  // Đuôi cờ: mở rộng nhanh rồi giữ bề ngang như lá cờ
+  CO: (u) => 0.1 + Math.min(u * 2.2, 1) * 0.42,
 }
 
 function taoVay(bienDang: (u: number) => number, dai: number, mau1: string, mau2: string, doRu = 0, soDoanDai = 28, soDoanNgang = 16) {

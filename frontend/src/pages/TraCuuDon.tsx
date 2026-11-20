@@ -83,6 +83,9 @@ function KetQuaDon({ don, sdt, lamMoi }: { don: DonHang; sdt: string; lamMoi: ()
             {thanhToan?.phuongThuc === 'COD' ? 'Thanh toán khi nhận' : 'Chuyển khoản'}
             {thanhToan && ` · ${THONG_TIN_THANH_TOAN[thanhToan.trangThai]}`}
           </p>
+          {Boolean(thanhToan?.soTienHoan) && (
+            <p className="rounded-2xl bg-kelp/10 p-3 text-xs text-kelp">Đã hoàn {formatTien(thanhToan!.soTienHoan!)} cho khách</p>
+          )}
           {choChuyenKhoan && (
             <p className="flex gap-2 rounded-2xl bg-aqua/5 p-3 text-xs">
               <Landmark className="h-4 w-4 shrink-0 text-aqua" />

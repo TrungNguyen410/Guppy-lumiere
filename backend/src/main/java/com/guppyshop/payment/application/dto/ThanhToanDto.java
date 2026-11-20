@@ -12,6 +12,7 @@ public record ThanhToanDto(
         TrangThaiThanhToan trangThai,
         BigDecimal soTien,
         LocalDateTime daTraLuc,
+        @Schema(description = "Tổng tiền đã hoàn cho khách") BigDecimal soTienHoan,
         String noiDungChuyenKhoan,
         String nganHang,
         String soTaiKhoan,

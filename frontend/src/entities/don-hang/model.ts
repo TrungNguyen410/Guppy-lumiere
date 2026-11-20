@@ -30,6 +30,7 @@ export interface ThanhToan {
   nganHang: string | null
   soTaiKhoan: string | null
   chuTaiKhoan: string | null
+  soTienHoan: number | null
 }
 
 /** Khớp DonHangDto của backend. */
@@ -70,6 +71,17 @@ export interface KetQuaApMa {
   ma: string
   phanTram: number
   tienGiam: number
+  phiGiao: number
+}
+
+export type HinhThucBaoHanh = 'DOI_CA' | 'HOAN_TIEN' | 'TU_CHOI'
+
+export const TEN_HINH_THUC_BAO_HANH: Record<HinhThucBaoHanh, string> = { DOI_CA: 'Đổi cá mới', HOAN_TIEN: 'Hoàn tiền cá', TU_CHOI: 'Từ chối' }
+
+export interface XuLyBaoHanh {
+  hinhThuc: HinhThucBaoHanh
+  soTienHoan?: number
+  ghiChu?: string
 }
 
 export interface YeuCauBaoHanh {
@@ -80,6 +92,10 @@ export interface YeuCauBaoHanh {
   soDienThoai: string
   moTa: string
   duongDanVideo: string | null
+  soCaChet: number
+  hinhThuc: HinhThucBaoHanh | null
+  soTienHoan: number | null
+  tienHoanToiDa: number
   ketQua: string | null
   xuLyLuc: string | null
   taoLuc: string

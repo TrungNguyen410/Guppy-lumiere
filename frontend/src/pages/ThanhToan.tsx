@@ -163,7 +163,7 @@ export function ThanhToan() {
                   </p>
                 )}
               </div>
-              <TomTatDon tamTinh={gio.data.tamTinh} phiGiao={gio.data.phiGiao} giamGia={apMa?.tienGiam} />
+              <TomTatDon tamTinh={gio.data.tamTinh} phiGiao={apMa?.phiGiao ?? gio.data.phiGiao} giamGia={apMa?.tienGiam} />
             </div>
           </div>
         )}

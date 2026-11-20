@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.guppyshop.common.exception.BusinessException;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,15 +31,51 @@ class ReviewTest {
         assertThat(DanhGia.anTen(null)).isEqualTo("Khách hàng");
     }
 
+    private static final BigDecimal TIEN_HANG = new BigDecimal("150000");
+
+    private static YeuCauBaoHanh yeuCau() {
+        return new YeuCauBaoHanh(1L, 2L, "Cá chết", "https://v.vn/1", 2);
+    }
+
     @Test
     void yeuCauChiXuLyMotLan() {
-        YeuCauBaoHanh yeuCau = new YeuCauBaoHanh(1L, 2L, "Cá chết", null);
+        YeuCauBaoHanh yeuCau = yeuCau();
         assertThat(yeuCau.daXuLy()).isFalse();
 
-        yeuCau.xuLy("Đã đổi cá", LocalDateTime.now());
+        yeuCau.xuLy(HinhThucBaoHanh.DOI_CA, null, TIEN_HANG, "  Giao kèm đơn sau ", LocalDateTime.now());
 
         assertThat(yeuCau.daXuLy()).isTrue();
-        assertThat(yeuCau.getKetQua()).isEqualTo("Đã đổi cá");
-        assertThatThrownBy(() -> yeuCau.xuLy("Lần hai", LocalDateTime.now())).isInstanceOf(BusinessException.class);
+        assertThat(yeuCau.getKetQua()).isEqualTo("Giao kèm đơn sau");
+        assertThat(yeuCau.tomTat()).isEqualTo("Đổi 2 cá mới – Giao kèm đơn sau");
+        assertThatThrownBy(() -> yeuCau.xuLy(HinhThucBaoHanh.DOI_CA, null, TIEN_HANG, null, LocalDateTime.now()))
+                .isInstanceOf(BusinessException.class);
+    }
+
+    @Test
+    void soCaChetPhaiTuMotCon() {
+        assertThatThrownBy(() -> new YeuCauBaoHanh(1L, 2L, "Cá chết", "https://v.vn/1", 0)).isInstanceOf(BusinessException.class);
+    }
+
+    @Test
+    void hoanTienPhaiCoSoTienVaKhongVuotTienHang() {
+        assertThatThrownBy(() -> yeuCau().xuLy(HinhThucBaoHanh.HOAN_TIEN, null, TIEN_HANG, null, LocalDateTime.now()))
+                .isInstanceOf(BusinessException.class);
+        assertThatThrownBy(() -> yeuCau().xuLy(HinhThucBaoHanh.HOAN_TIEN, new BigDecimal("150001"), TIEN_HANG, null, LocalDateTime.now()))
+                .isInstanceOf(BusinessException.class).hasMessageContaining("vượt tiền hàng");
+
+        YeuCauBaoHanh yeuCau = yeuCau();
+        yeuCau.xuLy(HinhThucBaoHanh.HOAN_TIEN, TIEN_HANG, TIEN_HANG, null, LocalDateTime.now());
+        assertThat(yeuCau.getSoTienHoan()).isEqualByComparingTo("150000");
+        assertThat(yeuCau.tomTat()).isEqualTo("Hoàn 150000đ tiền cá");
+    }
+
+    @Test
+    void doiCaKhongCoTienHoanVaTuChoiPhaiCoLyDo() {
+        assertThatThrownBy(() -> yeuCau().xuLy(HinhThucBaoHanh.DOI_CA, BigDecimal.TEN, TIEN_HANG, null, LocalDateTime.now()))
+                .isInstanceOf(BusinessException.class);
+        assertThatThrownBy(() -> yeuCau().xuLy(HinhThucBaoHanh.TU_CHOI, null, TIEN_HANG, "  ", LocalDateTime.now()))
+                .hasMessageContaining("lý do");
+        assertThatThrownBy(() -> yeuCau().xuLy(null, null, TIEN_HANG, null, LocalDateTime.now()))
+                .isInstanceOf(BusinessException.class);
     }
 }

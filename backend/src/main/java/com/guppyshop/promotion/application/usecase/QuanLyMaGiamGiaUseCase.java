@@ -3,6 +3,7 @@ package com.guppyshop.promotion.application.usecase;
 import com.guppyshop.common.application.BaseCrudService;
 import com.guppyshop.common.exception.BusinessException;
 import com.guppyshop.common.exception.NotFoundException;
+import com.guppyshop.common.domain.PhiGiaoHang;
 import com.guppyshop.promotion.application.dto.MaGiamGiaDtos.KetQuaApMaDto;
 import com.guppyshop.promotion.application.dto.MaGiamGiaDtos.LuuMaGiamGiaCommand;
 import com.guppyshop.promotion.application.dto.MaGiamGiaDtos.MaGiamGiaDto;
@@ -105,7 +106,8 @@ public class QuanLyMaGiamGiaUseCase extends BaseCrudService<MaGiamGia, LuuMaGiam
 
     private KetQuaApMaDto ketQua(MaGiamGia maGiamGia, BigDecimal tamTinh) {
         BigDecimal tienGiam = maGiamGia.tinhTienGiam(tamTinh, LocalDateTime.now());
-        return new KetQuaApMaDto(maGiamGia.getId(), maGiamGia.getMa(), maGiamGia.getPhanTram(), tienGiam);
+        return new KetQuaApMaDto(maGiamGia.getId(), maGiamGia.getMa(), maGiamGia.getPhanTram(), tienGiam,
+                PhiGiaoHang.tinh(tamTinh, tienGiam));
     }
 
     private String chuanHoa(String ma) {

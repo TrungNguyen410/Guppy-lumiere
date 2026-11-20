@@ -39,6 +39,14 @@ public class ThanhToanUseCase {
         return sangDto(thanhToan);
     }
 
+    /** Hoàn tiền cá khi bảo hành, gọi trong transaction xử lý bảo hành. */
+    public ThanhToanDto hoanTienBaoHanh(Long donHangId, BigDecimal soTien) {
+        ThanhToan thanhToan = thanhToanRepository.findByDonHangId(donHangId)
+                .orElseThrow(() -> new NotFoundException("Đơn hàng không có thanh toán"));
+        thanhToan.hoanTien(soTien);
+        return sangDto(thanhToan);
+    }
+
     public void khiDonHoanTat(Long donHangId) {
         thanhToanRepository.findByDonHangId(donHangId).ifPresent(ThanhToan::khiDonHoanTat);
     }
@@ -56,7 +64,7 @@ public class ThanhToanUseCase {
     private ThanhToanDto sangDto(ThanhToan thanhToan) {
         boolean chuyenKhoan = thanhToan.layPhuongThuc() == PhuongThucThanhToan.CHUYEN_KHOAN;
         CongThanhToan.ThongTinChuyenKhoan tk = chuyenKhoan ? congThanhToan.thongTinNhanTien() : null;
-        return new ThanhToanDto(thanhToan.layPhuongThuc(), thanhToan.getTrangThai(), thanhToan.getSoTien(), thanhToan.getDaTraLuc(),
+        return new ThanhToanDto(thanhToan.layPhuongThuc(), thanhToan.getTrangThai(), thanhToan.getSoTien(), thanhToan.getDaTraLuc(), thanhToan.getSoTienHoan(),
                 thanhToan.getNoiDungCk(),
                 tk == null ? null : tk.nganHang(),
                 tk == null ? null : tk.soTaiKhoan(),

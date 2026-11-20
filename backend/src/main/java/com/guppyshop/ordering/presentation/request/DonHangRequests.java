@@ -1,5 +1,6 @@
 package com.guppyshop.ordering.presentation.request;
 
+import com.guppyshop.common.domain.SoDienThoai;
 import com.guppyshop.cart.application.dto.GioHangDtos.ChuGioHang;
 import com.guppyshop.common.domain.ThanhPhoGiao;
 import com.guppyshop.ordering.application.dto.DonHangDtos.ChuyenTrangThaiCommand;
@@ -20,7 +21,7 @@ public final class DonHangRequests {
     @Schema(description = "Đặt hàng từ giỏ hiện tại; sản phẩm và giá do hệ thống lấy từ giỏ, không gửi từ client")
     public record DatHangRequest(
             @Schema(example = "Nguyễn Văn A") @NotBlank(message = "Họ tên không được trống") @Size(max = 120) String hoTen,
-            @Schema(example = "0901234567") @NotBlank(message = "Số điện thoại không được trống") @Pattern(regexp = "0\\d{9}", message = "Số điện thoại gồm 10 số, bắt đầu bằng 0") String soDienThoai,
+            @Schema(example = "0901234567") @NotBlank(message = "Số điện thoại không được trống") @Pattern(regexp = SoDienThoai.REGEX, message = SoDienThoai.THONG_BAO) String soDienThoai,
             @Schema(example = "12 Lê Lợi, Q.1") @NotBlank(message = "Địa chỉ không được trống") @Size(max = 255) String diaChi,
             @Schema(example = "TP. Hồ Chí Minh") @NotBlank(message = "Thành phố không được trống") @Pattern(regexp = ThanhPhoGiao.REGEX, message = "Cá sống chỉ giao tại TP. Hồ Chí Minh, Hà Nội, Đà Nẵng") String thanhPho,
             @Size(max = 500) String ghiChu,

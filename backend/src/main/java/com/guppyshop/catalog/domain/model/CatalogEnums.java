@@ -8,9 +8,14 @@ public final class CatalogEnums {
 
     public enum LoaiSanPham { CA_GUPPY, PHU_KIEN }
 
-    public enum HoaTiet { SOLID, MOSAIC, GRASS, KOI }
+    /**
+     * Theo các lớp màu của IFGA và tên gọi phổ biến ở Việt Nam: SOLID (một màu, gồm cả Full Red, Moscow),
+     * TUXEDO (nửa thân sau sẫm màu, Half Black), SNAKESKIN (vân da rắn, Cobra), DRAGON (vảy rồng ánh kim).
+     */
+    public enum HoaTiet { SOLID, MOSAIC, GRASS, KOI, TUXEDO, SNAKESKIN, DRAGON }
 
-    public enum KieuDuoi { DELTA, TRON, KIEM_DOI, VOAN, DAN, THUONG }
+    /** KIM: đuôi kim (pintail), CO: đuôi cờ (flagtail), hai kiểu đuôi ngắn có trong chuẩn IFGA. */
+    public enum KieuDuoi { DELTA, TRON, KIEM_DOI, VOAN, DAN, THUONG, KIM, CO }
 
     public enum DonViBan { CON_LE, CAP, BO_BA, LO_CA_BOT }
 

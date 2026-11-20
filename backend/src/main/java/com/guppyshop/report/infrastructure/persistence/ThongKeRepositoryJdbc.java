@@ -25,10 +25,11 @@ class ThongKeRepositoryJdbc implements ThongKeRepository {
     @Override
     public List<DoanhThuNgay> doanhThuTheoNgay(LocalDate tuNgay, LocalDate denNgay) {
         return jdbc.query("""
-                SELECT DATE(hoan_tat_luc) AS ngay, SUM(tong_tien) AS doanh_thu
-                FROM don_hang
-                WHERE hoan_tat_luc >= :tu AND hoan_tat_luc < :den AND trang_thai <> 'DA_HUY'
-                GROUP BY DATE(hoan_tat_luc)
+                SELECT DATE(d.hoan_tat_luc) AS ngay, SUM(d.tong_tien - COALESCE(t.so_tien_hoan, 0)) AS doanh_thu
+                FROM don_hang d
+                LEFT JOIN thanh_toan t ON t.don_hang_id = d.id
+                WHERE d.hoan_tat_luc >= :tu AND d.hoan_tat_luc < :den AND d.trang_thai <> 'DA_HUY'
+                GROUP BY DATE(d.hoan_tat_luc)
                 """, Map.of("tu", tuNgay.atStartOfDay(), "den", denNgay.plusDays(1).atStartOfDay()),
                 (hang, i) -> new DoanhThuNgay(hang.getDate("ngay").toLocalDate(), hang.getBigDecimal("doanh_thu")));
     }

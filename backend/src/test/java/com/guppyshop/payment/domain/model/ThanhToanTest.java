@@ -84,4 +84,30 @@ class ThanhToanTest {
         assertThat(daThu.getTrangThai()).isEqualTo(TrangThaiThanhToan.DA_HOAN_TIEN);
         assertThat(chuaThu.getTrangThai()).isEqualTo(TrangThaiThanhToan.CHUA_THANH_TOAN);
     }
+
+    @Test
+    void hoanTienBaoHanhMotPhanRoiToanBo() {
+        ThanhToan cod = ThanhToanFactory.tao(PhuongThucThanhToan.COD, 1L, new BigDecimal("300000"));
+        assertThatThrownBy(() -> cod.hoanTien(BigDecimal.ONE)).isInstanceOf(BusinessException.class)
+                .hasMessageContaining("chưa thu tiền");
+        cod.khiDonHoanTat();
+
+        cod.hoanTien(new BigDecimal("100000"));
+        assertThat(cod.getTrangThai()).isEqualTo(TrangThaiThanhToan.DA_THANH_TOAN);
+        assertThat(cod.getSoTienHoan()).isEqualByComparingTo("100000");
+
+        assertThatThrownBy(() -> cod.hoanTien(new BigDecimal("200001"))).isInstanceOf(BusinessException.class);
+        assertThatThrownBy(() -> cod.hoanTien(BigDecimal.ZERO)).isInstanceOf(BusinessException.class);
+
+        cod.hoanTien(new BigDecimal("200000"));
+        assertThat(cod.getTrangThai()).isEqualTo(TrangThaiThanhToan.DA_HOAN_TIEN);
+    }
+
+    @Test
+    void huyDonDaThuThiHoanToanBo() {
+        ThanhToan cod = ThanhToanFactory.tao(PhuongThucThanhToan.COD, 1L, new BigDecimal("300000"));
+        cod.khiDonHoanTat();
+        cod.khiDonBiHuy();
+        assertThat(cod.getSoTienHoan()).isEqualByComparingTo("300000");
+    }
 }

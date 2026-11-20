@@ -1,5 +1,6 @@
 package com.guppyshop.identity.presentation.request;
 
+import com.guppyshop.common.domain.SoDienThoai;
 import com.guppyshop.identity.application.dto.XacThucDtos.DangKyCommand;
 import com.guppyshop.identity.application.dto.XacThucDtos.DangNhapCommand;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,7 +18,7 @@ public final class XacThucRequests {
     public record DangKyRequest(
             @Schema(example = "Nguyễn Văn A") @NotBlank(message = "Họ tên không được trống") @Size(max = 120) String hoTen,
             @Schema(example = "khach@example.com") @NotBlank(message = "Email không được trống") @Email(message = "Email không hợp lệ") @Size(max = 160) String email,
-            @Schema(example = "0901234567") @NotBlank(message = "Số điện thoại không được trống") @Pattern(regexp = "0\\d{9}", message = "Số điện thoại gồm 10 số, bắt đầu bằng 0") String soDienThoai,
+            @Schema(example = "0901234567") @NotBlank(message = "Số điện thoại không được trống") @Pattern(regexp = SoDienThoai.REGEX, message = SoDienThoai.THONG_BAO) String soDienThoai,
             @Schema(example = "MatKhau@123") @NotBlank(message = "Mật khẩu không được trống") @Size(min = 8, max = 72, message = "Mật khẩu từ 8 đến 72 ký tự") @Pattern(regexp = "\\p{ASCII}*", message = "Mật khẩu không dùng ký tự có dấu") String matKhau) {
 
         public DangKyCommand sangLenh() {

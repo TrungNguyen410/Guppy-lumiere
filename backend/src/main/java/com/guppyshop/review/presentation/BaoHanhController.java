@@ -66,12 +66,12 @@ public class BaoHanhController {
         return ApiResponse.ok(PageResponse.tu(baoHanhUseCase.danhSachChoNhanVien(chuaXuLy, new PhanTrang(trang, kichThuoc))));
     }
 
-    @Operation(summary = "Xử lý xong yêu cầu bảo hành", description = "Đơn quay về HOAN_TAT, kết quả được ghi vào lịch sử đơn")
+    @Operation(summary = "Xử lý xong yêu cầu bảo hành", description = "Chọn đổi cá, hoàn tiền cá (không quá tiền hàng, không gồm phí giao) hoặc từ chối kèm lý do. Đơn quay về HOAN_TAT")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Đã xử lý")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Không tồn tại")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "422", description = "Yêu cầu đã được xử lý")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "422", description = "Đã xử lý, số tiền hoàn sai hoặc đơn chưa thu tiền")
     @PutMapping("/nv/bao-hanh/{id}/xu-ly")
     public ApiResponse<BaoHanhDto> xuLy(@PathVariable Long id, @Valid @RequestBody XuLyBaoHanhRequest yeuCau) {
-        return ApiResponse.ok(baoHanhUseCase.xuLy(id, yeuCau.ketQua()));
+        return ApiResponse.ok(baoHanhUseCase.xuLy(id, yeuCau.sangLenh()));
     }
 }

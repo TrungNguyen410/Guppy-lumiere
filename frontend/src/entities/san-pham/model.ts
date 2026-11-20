@@ -1,7 +1,7 @@
 import type { MauNhan } from '@/shared/ui/Badge'
 
-export type KieuDuoi = 'DELTA' | 'TRON' | 'KIEM_DOI' | 'VOAN' | 'DAN' | 'THUONG'
-export type HoaTiet = 'SOLID' | 'MOSAIC' | 'GRASS' | 'KOI'
+export type KieuDuoi = 'DELTA' | 'TRON' | 'KIEM_DOI' | 'VOAN' | 'DAN' | 'THUONG' | 'KIM' | 'CO'
+export type HoaTiet = 'SOLID' | 'MOSAIC' | 'GRASS' | 'KOI' | 'TUXEDO' | 'SNAKESKIN' | 'DRAGON'
 export type DonViBan = 'CON_LE' | 'CAP' | 'BO_BA' | 'LO_CA_BOT'
 export type GioiTinh = 'DUC' | 'CAI' | 'KHONG_AP_DUNG'
 export type NhanSanPham = 'HOT' | 'MOI_VE' | 'HIEM' | 'GIAM_GIA'
@@ -123,6 +123,18 @@ export const TEN_DUOI: Record<KieuDuoi, string> = {
   VOAN: 'Đuôi voan',
   DAN: 'Đuôi đàn',
   THUONG: 'Đuôi thuổng',
+  KIM: 'Đuôi kim',
+  CO: 'Đuôi cờ',
+}
+
+export const TEN_HOA_TIET: Record<HoaTiet, string> = {
+  SOLID: 'Đồng màu',
+  MOSAIC: 'Mosaic',
+  GRASS: 'Grass',
+  KOI: 'Koi',
+  TUXEDO: 'Tuxedo (Half Black)',
+  SNAKESKIN: 'Da rắn (Cobra)',
+  DRAGON: 'Vảy rồng',
 }
 
 export const TEN_PHU_KIEN: Record<LoaiPhuKien, string> = { THUC_AN: 'Thức ăn', BE: 'Bể cá', LOC: 'Máy lọc', THUOC: 'Thuốc' }

@@ -13,7 +13,8 @@ interface Props {
 
 /** Khung tóm tắt tiền của đơn, dùng chung cho Giỏ hàng và Thanh toán. Số tiền đều do backend tính. */
 export function TomTatDon({ tamTinh, phiGiao, giamGia = 0, hanhDong }: Props) {
-  const tienDo = Math.min(100, (tamTinh / MUC_MIEN_PHI_GIAO) * 100)
+  const sauGiam = tamTinh - giamGia
+  const tienDo = Math.min(100, (sauGiam / MUC_MIEN_PHI_GIAO) * 100)
   return (
     <div className="glass sticky top-28 rounded-[28px] p-6">
       <p className="font-display text-lg font-semibold">Tóm tắt đơn</p>
@@ -38,7 +39,7 @@ export function TomTatDon({ tamTinh, phiGiao, giamGia = 0, hanhDong }: Props) {
           <Truck className="h-3.5 w-3.5 shrink-0 text-aqua" />
           {tienDo < 100 ? (
             <span>
-              Mua thêm <b className="text-white">{formatTien(MUC_MIEN_PHI_GIAO - tamTinh)}</b> để miễn phí giao
+              Mua thêm <b className="text-white">{formatTien(MUC_MIEN_PHI_GIAO - sauGiam)}</b> để miễn phí giao
             </span>
           ) : (
             'Bạn được miễn phí giao hàng!'

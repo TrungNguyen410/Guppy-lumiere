@@ -49,6 +49,16 @@ Tra cứu đơn mẫu: `GP24110931` / `0901234567`, `GP24110927` / `0912345678`,
 
 Mã giảm giá mẫu: `GUPPY10`, `KHAITRUONG20` dùng được; `HETHAN15` đã hết hạn; `TAMDUNG5` đang tắt. Cổng thanh toán là giả lập, không nhận tiền thật.
 
+## Quy tắc nghiệp vụ chính
+- **Dòng cá:** 10 dòng, họa tiết theo các lớp màu IFGA: đồng màu, Mosaic, Grass, Koi, Tuxedo (Half Black), da rắn (Cobra), vảy rồng. Có 8 kiểu đuôi, tính cả đuôi kim (pintail) và đuôi cờ (flagtail).
+- **Đơn vị bán:** con lẻ theo giới tính, cặp (1 đực + 1 cái), bộ ba (1 đực + 2 cái), lô cá bột. Giá cặp và bộ ba không được cao hơn tổng giá mua lẻ từng con.
+- **Số điện thoại:** số di động 10 số, đầu 03, 05, 07, 08 hoặc 09.
+- **Phí giao:** 50.000đ, miễn phí khi tiền hàng sau giảm giá từ 500.000đ.
+- **Bảo hành cá chết:** chỉ cho khách có tài khoản, trong 24 giờ sau khi đơn hoàn tất, phải gửi đường dẫn video mở hộp và số cá chết. Nhân viên chọn một trong ba cách:
+  - Đổi cá: hệ thống xuất cá từ chính các lô đã bán cho đơn, không quá số cá đã bán.
+  - Hoàn tiền cá: không vượt tiền hàng sau giảm giá, không hoàn phí giao, cho phép hoàn một phần.
+  - Từ chối: bắt buộc ghi lý do.
+
 ## Kiến trúc
 Backend chia 9 module theo nghiệp vụ, thêm `common` dùng chung: `identity`, `catalog`, `inventory`, `cart`, `ordering`, `payment`, `promotion`, `review`, `report`. Trong mỗi module, phụ thuộc đi theo một chiều:
 

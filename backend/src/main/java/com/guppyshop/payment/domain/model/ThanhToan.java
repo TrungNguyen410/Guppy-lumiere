@@ -1,6 +1,7 @@
 package com.guppyshop.payment.domain.model;
 
 import com.guppyshop.common.domain.BaseEntity;
+import com.guppyshop.common.exception.BusinessException;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -46,6 +47,10 @@ public abstract class ThanhToan extends BaseEntity {
     @Column(name = "da_tra_luc")
     private LocalDateTime daTraLuc;
 
+    /** Tổng tiền đã hoàn; bằng soTien thì trạng thái là DA_HOAN_TIEN. */
+    @Column(name = "so_tien_hoan", nullable = false)
+    private BigDecimal soTienHoan = BigDecimal.ZERO;
+
     protected ThanhToan(Long donHangId, BigDecimal soTien) {
         this.donHangId = donHangId;
         this.soTien = soTien;
@@ -65,6 +70,25 @@ public abstract class ThanhToan extends BaseEntity {
     /** Đơn bị hủy: chỉ hoàn tiền nếu đã thu. */
     public void khiDonBiHuy() {
         if (trangThai == TrangThaiThanhToan.DA_THANH_TOAN) {
+            soTienHoan = soTien;
+            trangThai = TrangThaiThanhToan.DA_HOAN_TIEN;
+        }
+    }
+
+    /** Hoàn một phần hoặc toàn bộ khi bảo hành; chỉ hoàn được tiền đã thu và không hoàn quá số đã thu. */
+    public void hoanTien(BigDecimal so) {
+        if (trangThai != TrangThaiThanhToan.DA_THANH_TOAN) {
+            throw new BusinessException("Đơn chưa thu tiền hoặc đã hoàn hết, không thể hoàn tiền");
+        }
+        if (so == null || so.signum() <= 0) {
+            throw new BusinessException("Số tiền hoàn phải lớn hơn 0");
+        }
+        BigDecimal sauHoan = soTienHoan.add(so);
+        if (sauHoan.compareTo(soTien) > 0) {
+            throw new BusinessException("Số tiền hoàn vượt số tiền đã thu");
+        }
+        soTienHoan = sauHoan;
+        if (sauHoan.compareTo(soTien) == 0) {
             trangThai = TrangThaiThanhToan.DA_HOAN_TIEN;
         }
     }

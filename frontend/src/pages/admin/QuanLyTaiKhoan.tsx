@@ -1,3 +1,4 @@
+import { LOI_SDT, MAU_SDT } from '@/shared/lib/soDienThoai'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Pencil, Plus, Trash2 } from 'lucide-react'
 import { useState } from 'react'
@@ -11,7 +12,6 @@ import { TieuDeQuanTri } from '@/shared/ui/TieuDe'
 import { BaoLoi, DangTai, LoiThaoTac } from '@/shared/ui/TrangThaiDuLieu'
 
 const KHOA = ['nhan-vien']
-const MAU_SDT = '0[0-9]{9}'
 
 function FormNhanVien({ ban, khiDong }: { ban: NhanVien | null; khiDong: () => void }) {
   const queryClient = useQueryClient()
@@ -42,7 +42,7 @@ function FormNhanVien({ ban, khiDong }: { ban: NhanVien | null; khiDong: () => v
         <Input type="email" required disabled={Boolean(ban)} value={email} onChange={(su) => setEmail(su.target.value)} />
       </Truong>
       <Truong nhan="Số điện thoại *">
-        <Input required pattern={MAU_SDT} title="Gồm 10 số, bắt đầu bằng 0" value={soDienThoai} onChange={(su) => setSoDienThoai(su.target.value)} />
+        <Input required pattern={MAU_SDT} title={LOI_SDT} value={soDienThoai} onChange={(su) => setSoDienThoai(su.target.value)} />
       </Truong>
       <Truong nhan={ban ? 'Mật khẩu mới' : 'Mật khẩu *'} goiY={ban ? 'bỏ trống là giữ nguyên' : 'từ 8 ký tự'}>
         <Input type="password" required={!ban} minLength={8} maxLength={72} autoComplete="new-password" value={matKhau} onChange={(su) => setMatKhau(su.target.value)} />

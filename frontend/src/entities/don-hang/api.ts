@@ -1,6 +1,6 @@
 import { axiosClient } from '@/shared/api/axiosClient'
 import type { ApiResponse, PageResponse } from '@/shared/types/ApiResponse'
-import type { DatHang, DonHang, KetQuaApMa, TrangThaiDon, ThanhToan, YeuCauBaoHanh } from './model'
+import type { DatHang, DonHang, KetQuaApMa, TrangThaiDon, ThanhToan, XuLyBaoHanh, YeuCauBaoHanh } from './model'
 
 export async function datHang(duLieu: DatHang): Promise<DonHang> {
   const { data } = await axiosClient.post<ApiResponse<DonHang>>('/don-hang', duLieu)
@@ -46,7 +46,7 @@ export async function guiDanhGia(duLieu: { maDon: string; sanPhamId: number; soS
   await axiosClient.post('/danh-gia', duLieu)
 }
 
-export async function guiBaoHanh(duLieu: { maDon: string; moTa: string; duongDanVideo?: string }): Promise<YeuCauBaoHanh> {
+export async function guiBaoHanh(duLieu: { maDon: string; moTa: string; duongDanVideo: string; soCaChet: number }): Promise<YeuCauBaoHanh> {
   const { data } = await axiosClient.post<ApiResponse<YeuCauBaoHanh>>('/bao-hanh', duLieu)
   return data.duLieu
 }
@@ -61,7 +61,7 @@ export async function layBaoHanhChoXuLy(): Promise<PageResponse<YeuCauBaoHanh>> 
   return data.duLieu
 }
 
-export async function xuLyBaoHanh(id: number, ketQua: string): Promise<YeuCauBaoHanh> {
-  const { data } = await axiosClient.put<ApiResponse<YeuCauBaoHanh>>(`/nv/bao-hanh/${id}/xu-ly`, { ketQua })
+export async function xuLyBaoHanh(id: number, ketQua: XuLyBaoHanh): Promise<YeuCauBaoHanh> {
+  const { data } = await axiosClient.put<ApiResponse<YeuCauBaoHanh>>(`/nv/bao-hanh/${id}/xu-ly`, ketQua)
   return data.duLieu
 }

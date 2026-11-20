@@ -126,4 +126,17 @@ class LoCaTest {
         assertThat(tra.getDeltaDuc()).isEqualTo(2);
         assertThat(tra.getDonHangId()).isEqualTo(9L);
     }
+
+    @Test
+    void xuatBaoHanhTruDungGioiTinhVaKhongVuotTon() {
+        LoCa lo = lo(2, 3, 0);
+
+        BienDongKho dong = lo.xuatBaoHanh(new TonKho(1, 2, 0), 9L, "Đổi cá");
+
+        assertThat(lo.getSoDuc()).isEqualTo(1);
+        assertThat(lo.getSoCai()).isEqualTo(1);
+        assertThat(dong.getLoai()).isEqualTo(LoaiBienDong.BAO_HANH);
+        assertThat(dong.getDeltaCai()).isEqualTo(-2);
+        assertThatThrownBy(() -> lo.xuatBaoHanh(new TonKho(2, 0, 0), 9L, "Đổi cá")).isInstanceOf(BusinessException.class);
+    }
 }
